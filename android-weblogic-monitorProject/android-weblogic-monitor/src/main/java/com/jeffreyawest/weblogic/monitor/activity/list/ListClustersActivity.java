@@ -8,11 +8,11 @@ import com.jeffreyawest.weblogic.entity.Cluster;
 import com.jeffreyawest.weblogic.monitor.R;
 import com.jeffreyawest.weblogic.monitor.activity.list.adapter.ClusterListAdapter;
 
-public class ListClustersFragment
+public class ListClustersActivity
     extends ListEntityActivity<Cluster>
 {
 
-  private static final String LOG_TAG = "ListClustersFragment";
+  private static final String LOG_TAG = "ListClustersActivity";
 
   @Override
   public void onCreate(Bundle savedInstanceState)
