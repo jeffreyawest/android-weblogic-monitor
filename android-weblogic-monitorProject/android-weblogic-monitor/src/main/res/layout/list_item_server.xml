@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ListItemRelativeLayout">
+
+  <LinearLayout
+      android:id="@+id/text_area"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_centerVertical="true"
+      android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/entity_name"
+        style="@style/ListItemEntityName"
+        android:text="@+id/entity_name"/>
+
+    <TableLayout
+        style="@style/ListItemTable">
+
+      <TableRow
+          style="@style/ListItemTableRow">
+
+        <TextView
+            android:id="@+id/state_graphic"
+            style="@style/ListItemEntityGraphic"/>
+
+        <TextView
+            android:id="@+id/state_text"
+            style="@style/ListItemEntityDetails"/>
+
+        <TextView
+            style="@style/ListItemEntityDetails"
+            android:text="@string/state_suffix"/>
+
+      </TableRow>
+
+      <TableRow
+          style="@style/ListItemTableRow">
+
+        <TextView
+            android:id="@+id/health_graphic"
+            style="@style/ListItemEntityGraphic"/>
+
+        <TextView
+            android:id="@+id/health_text"
+            style="@style/ListItemEntityDetails"/>
+
+        <TextView
+            style="@style/ListItemEntityDetails"
+            android:text="@string/health_suffix"/>
+
+      </TableRow>
+
+    </TableLayout>
+
+  </LinearLayout>
+
+  <TextView
+      style="@style/ListItemChevron"/>
+
+</RelativeLayout>

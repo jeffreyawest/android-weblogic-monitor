@@ -1,0 +1,96 @@
+{
+  "body": {
+    "items": [
+      {
+        "dataSources": [], 
+        "health": "HEALTH_OK",
+        "maxThreadsConstraints": [
+          {
+            "deferredRequests": 20, 
+            "executingRequests": 30, 
+            "name": "maxThreadsConstraints-0", 
+            "server": "ms1"
+          },
+          {
+            "deferredRequests": 20, 
+            "executingRequests": 30, 
+            "name": "maxThreadsConstraints-0", 
+            "server": "ms2"
+          }
+        ], 
+        "minThreadsConstraints": [
+          {
+            "completedRequests": 100, 
+            "currentWaitTime": 10, 
+            "executingRequests": 10, 
+            "maxWaitTime": 1000, 
+            "mustRunCount": 0, 
+            "name": "minThreadsConstraints-0", 
+            "outOfOrderExecutionCount": 10, 
+            "pendingRequests": 20, 
+            "server": "ms1"
+          }, 
+          {
+            "completedRequests": 100, 
+            "currentWaitTime": 10, 
+            "executingRequests": 10, 
+            "maxWaitTime": 1000, 
+            "mustRunCount": 0, 
+            "name": "minThreadsConstraints-0", 
+            "outOfOrderExecutionCount": 10, 
+            "pendingRequests": 20, 
+            "server": "ms2"
+          }
+        ], 
+        "name": "appscopedejbs", 
+        "requestClasses": [
+          {
+            "completedCount": 100, 
+            "name": "requestClass-0", 
+            "pendingRequestCount": 10, 
+            "requestClassType": "fairshare", 
+            "server": "ms1", 
+            "totalThreadUse": 10, 
+            "virtualTimeIncrement": 0
+          }, 
+          {
+            "completedCount": 100, 
+            "name": "requestClass-0", 
+            "pendingRequestCount": 10, 
+            "requestClassType": "fairshare", 
+            "server": "ms2", 
+            "totalThreadUse": 10, 
+            "virtualTimeIncrement": 0
+          }
+        ], 
+        "state": "STATE_ACTIVE", 
+        "targetStates": [
+          {
+            "state": "STATE_ACTIVE", 
+            "target": "ms1"
+          }, 
+          {
+            "name": "ms2", 
+            "state": "STATE_ACTIVE"
+          }
+        ], 
+        "type": "ear", 
+        "workManagers": [
+          {
+            "completedRequests": 10, 
+            "name": "default", 
+            "pendingRequests": 0, 
+            "server": "ms1"
+          }, 
+          {
+            "completedRequests": 20, 
+            "name": "default", 
+            "pendingRequests": 0, 
+            "server": "ms2"
+          }
+        ]
+      }
+    ]
+  }, 
+  "messages": []
+}

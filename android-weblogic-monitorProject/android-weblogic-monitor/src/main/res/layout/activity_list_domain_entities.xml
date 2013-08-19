@@ -1,0 +1,73 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".ListDomainEntitiesActivity">
+
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/servers"
+        android:text="@string/servers"
+        style="@style/ListDomainEntities_Entity"/>
+
+    <TextView
+        android:text="@string/greater_than"
+        style="@style/ListDomainEntitiesChevron"/>
+
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/clusters"
+        style="@style/ListDomainEntities_Entity"
+        android:text="@string/clusters"/>
+
+    <TextView
+        android:text="@string/greater_than"
+        style="@style/ListDomainEntitiesChevron"/>
+
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/datasources"
+        style="@style/ListDomainEntities_Entity"
+        android:text="@string/datasources"/>
+
+    <TextView
+        android:text="@string/greater_than"
+        style="@style/ListDomainEntitiesChevron"/>
+
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/applications"
+        style="@style/ListDomainEntities_Entity"
+        android:text="@string/applications"/>
+
+    <TextView
+        android:text="@string/greater_than"
+        style="@style/ListDomainEntitiesChevron"/>
+
+  </RelativeLayout>
+
+</LinearLayout>

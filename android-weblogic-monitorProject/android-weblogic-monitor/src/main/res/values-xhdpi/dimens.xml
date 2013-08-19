@@ -1,0 +1,32 @@
+<!--
+ * **************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code.
+ * <p/>
+ * If you choose to use this code for any reason, including but not limited
+ * to its use as an example you do so at your own risk and without the support
+ * of Oracle.
+ * <p/>
+ * This code is provided under the following licenses:
+ * <p/>
+ * GNU General Public License (GPL-2.0)
+ * <p/>
+ * ****************************************************************************
+ * <p/>
+ * Created by jeffreyawest
+ -->
+<resources>
+  <!-- Default screen margins, per the Android Design guidelines. -->
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+
+  <dimen name="entity_details_table_header_text_size">10sp</dimen>
+  <dimen name="entity_details_table_text_size">7sp</dimen>
+
+  <dimen name="entity_chart_title_size">10sp</dimen>
+  <dimen name="entity_chart_label_size">20sp</dimen>
+  <dimen name="entity_chart_legend_text_size">10sp</dimen>
+  <dimen name="entity_chart_legend_height">20dp</dimen>
+
+</resources>

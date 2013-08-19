@@ -1,0 +1,198 @@
+<!--
+ * **************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code.
+ * <p/>
+ * If you choose to use this code for any reason, including but not limited
+ * to its use as an example you do so at your own risk and without the support
+ * of Oracle.
+ * <p/>
+ * This code is provided under the following licenses:
+ * <p/>
+ * GNU General Public License (GPL-2.0)
+ * <p/>
+ * ****************************************************************************
+ * <p/>
+ * Created by jeffreyawest
+ -->
+<resources>
+
+  <!--
+      Base application theme, dependent on API level. This theme is replaced
+      by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+  -->
+  <style name="AppBaseTheme" parent="android:Theme.Light">
+    <!--
+        Theme customizations available in newer API levels can go in
+        res/values-vXX/styles.xml, while customizations related to
+        backward-compatibility can go here.
+    -->
+  </style>
+
+  <!-- Application theme. -->
+  <style name="AppTheme" parent="AppBaseTheme">
+    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+  </style>
+
+  <style name="ListEntityHeader">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">30sp</item>
+    <item name="android:text">Header</item>
+  </style>
+
+  <style name="ListEntityListView">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:divider">@color/LightGrey</item>
+    <item name="android:dividerHeight">2dp</item>
+  </style>
+
+  <!-- DDDDDDDDDDDDDDDDDDDDDDDDDDDD -->
+
+  <style name="ListItemRelativeLayout">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:padding">2dp</item>
+  </style>
+
+  <style name="ListItemEntityName">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingLeft">2dp</item>
+    <item name="android:paddingBottom">5dp</item>
+    <item name="android:textSize">25sp</item>
+  </style>
+
+  <style name="ListItemTable">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingLeft">15dp</item>
+  </style>
+
+  <style name="ListItemTableRow">
+    <item name="android:padding">2dp</item>
+  </style>
+
+  <style name="ListItemEntityDetails">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">15sp</item>
+    <item name="android:padding">5dp</item>
+  </style>
+
+  <style name="ListItemEntityGraphic" parent="ListItemEntityDetails">
+    <item name="android:layout_width">25dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:background">@color/LightGrey</item>
+  </style>
+
+  <style name="ListItemChevron">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_alignParentRight">true</item>
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:textSize">60sp</item>
+    <item name="android:text">@string/greater_than</item>
+  </style>
+
+  <style name="ListDomainEntities_Entity">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_alignParentLeft">true</item>
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:padding">5dp</item>
+    <item name="android:textSize">40sp</item>
+  </style>
+
+  <style name="ListDomainEntitiesChevron">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_alignParentRight">true</item>
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:textSize">60sp</item>
+    <item name="android:text">@string/greater_than</item>
+
+  </style>
+
+  <style name="EndpointEntryPassword">
+    <item name="android:layout_gravity">right</item>
+    <item name="android:layout_weight">8</item>
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:inputType">textPassword</item>
+  </style>
+
+  <style name="EndpointEntryFieldLabel">
+    <item name="android:layout_width">80dp</item>
+    <item name="android:layout_weight">1</item>
+    <item name="android:layout_gravity">center_vertical</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="EndpointEntryInputField">
+    <item name="android:layout_gravity">right</item>
+    <item name="android:layout_weight">8</item>
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="EndpointEntryPrompt">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:paddingBottom">20dp</item>
+  </style>
+
+  <style name="ButtonFullWidth">
+    <item name="android:textSize">25sp</item>
+    <item name="android:layout_height">50dp</item>
+    <item name="android:layout_width">fill_parent</item>
+  </style>
+
+  <style name="ButtonNext" parent="ButtonFullWidth">
+  </style>
+
+  <style name="ButtonGetStarted" parent="ButtonFullWidth">
+  </style>
+
+  <style name="DisplayEntityHeader">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:paddingBottom">10dp</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="OriginalJSON">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="OriginalJSONLabel">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">15sp</item>
+  </style>
+
+  <style name="EntityGraph">
+    <item name="android:layout_height">200dp</item>
+    <item name="android:layout_width">wrap_content</item>
+  </style>
+
+  <style name="EntityGraphHeader">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">15sp</item>
+  </style>
+
+  <style name="EntityInformationHeader">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">15sp</item>
+  </style>
+
+
+</resources>

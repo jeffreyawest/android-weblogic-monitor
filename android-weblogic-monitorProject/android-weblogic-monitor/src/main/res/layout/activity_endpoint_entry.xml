@@ -1,0 +1,126 @@
+<!--
+ * **************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code.
+ * <p/>
+ * If you choose to use this code for any reason, including but not limited
+ * to its use as an example you do so at your own risk and without the support
+ * of Oracle.
+ * <p/>
+ * This code is provided under the following licenses:
+ * <p/>
+ * GNU General Public License (GPL-2.0)
+ * <p/>
+ * ****************************************************************************
+ * <p/>
+ * Created by jeffreyawest
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context=".EndpointEntryActivity"
+              android:orientation="vertical"
+              android:padding="20dp"
+    >
+
+  <TextView
+      android:text="@string/enter_wls_coords"
+      style="@style/EndpointEntryPrompt"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+      <TextView
+          style="@style/EndpointEntryFieldLabel"
+          android:text="@string/enter_ip_host"/>
+
+      <EditText
+          android:id="@+id/wls_host"
+          style="@style/EndpointEntryInputField"
+          android:text="@string/default_wls_host"
+          android:hint="@string/ip_host_hint"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+      <TextView
+          style="@style/EndpointEntryFieldLabel"
+          android:text="@string/enter_port_label"/>
+
+      <EditText
+          android:id="@+id/wls_port"
+          style="@style/EndpointEntryInputField"
+          android:text="@string/default_wls_port"
+          android:hint="@string/port_hint"
+          />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+      <TextView
+          style="@style/EndpointEntryFieldLabel"
+          android:text="@string/enter_username_label"/>
+
+      <EditText
+          android:id="@+id/wls_user"
+          android:text="@string/default_wls_user"
+          android:hint="@string/username_hint"
+          style="@style/EndpointEntryInputField"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+      <TextView
+          android:text="@string/enter_password_label"
+          style="@style/EndpointEntryFieldLabel"/>
+
+      <EditText
+          android:id="@+id/wls_passwd"
+          android:text="@string/default_wls_password"
+          android:hint="@string/password_hint"
+          style="@style/EndpointEntryPassword"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:text="@string/next"
+        android:onClick="clickNext"
+        style="@style/ButtonNext"/>
+    <Button
+        android:id="@+id/btn_offline"
+        android:text="@string/use_offline"
+        android:onClick="clickOffline"
+        style="@style/ButtonFullWidth"/>
+  </LinearLayout>
+</LinearLayout>
+

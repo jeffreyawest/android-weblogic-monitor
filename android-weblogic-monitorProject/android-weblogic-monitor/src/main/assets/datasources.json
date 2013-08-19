@@ -1,0 +1,45 @@
+{
+  "body": {
+    "items": [
+      {
+        "instances": [
+          {
+            "activeConnectionsAverageCount": 5, 
+            "enabled": true, 
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "server": "ms1", 
+            "state": "Running"
+          }, 
+          {
+            "activeConnectionsAverageCount": 5, 
+            "enabled": true, 
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "server": "ms2", 
+            "state": "Running"
+          }
+        ], 
+        "name": "gridlinkDS", 
+        "type": "GridLink"
+      }
+    ]
+  }, 
+  "messages": []
+}

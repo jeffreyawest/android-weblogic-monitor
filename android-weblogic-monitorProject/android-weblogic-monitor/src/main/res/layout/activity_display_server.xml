@@ -1,0 +1,118 @@
+<!--
+ * **************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code.
+ * <p/>
+ * If you choose to use this code for any reason, including but not limited
+ * to its use as an example you do so at your own risk and without the support
+ * of Oracle.
+ * <p/>
+ * This code is provided under the following licenses:
+ * <p/>
+ * GNU General Public License (GPL-2.0)
+ * <p/>
+ * ****************************************************************************
+ * <p/>
+ * Created by jeffreyawest
+ -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MonitorServer"
+    >
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/monitor_header"
+        android:text="@string/monitor_server_header"
+        style="@style/DisplayEntityHeader"/>
+
+    <!--
+      Heap Chart...
+    -->
+
+    <LinearLayout
+        android:id="@+id/chart_parent"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+      <LinearLayout
+          android:id="@+id/heap_chart_parent"
+          android:padding="5dp"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:layout_weight="1"
+          android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/heap_chart_header"
+            android:text="@string/jvm_heap"
+            style="@style/EntityGraphHeader"/>
+
+        <LinearLayout
+            android:id="@+id/heap_chart"
+            android:orientation="horizontal"
+            style="@style/EntityGraph"/>
+      </LinearLayout>
+
+      <!--
+      CPU Chart...
+      -->
+
+      <LinearLayout
+          android:id="@+id/cpu_chart_parent"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:layout_weight="1"
+          android:padding="5dp"
+          android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cpu_chart_header"
+            style="@style/EntityGraphHeader"
+            android:text="@string/cpu_load"/>
+
+        <LinearLayout
+            android:id="@+id/cpu_chart"
+            android:orientation="horizontal"
+            style="@style/EntityGraph"/>
+
+      </LinearLayout>
+    </LinearLayout>
+
+    <!-- TEXT DATA -->
+
+    <TextView
+        android:text="@string/server_information"
+        style="@style/EntityInformationHeader"/>
+
+    <LinearLayout
+        android:id="@+id/data_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+    <TextView
+        android:text="@string/original_json"
+        style="@style/OriginalJSONLabel"/>
+
+    <TextView
+        android:id="@+id/original_json"
+        android:text="@string/loading"
+        style="@style/OriginalJSON"/>
+
+  </LinearLayout>
+</ScrollView>

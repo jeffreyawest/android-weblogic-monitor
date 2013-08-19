@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * **************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code.
+ * <p/>
+ * If you choose to use this code for any reason, including but not limited
+ * to its use as an example you do so at your own risk and without the support
+ * of Oracle.
+ * <p/>
+ * This code is provided under the following licenses:
+ * <p/>
+ * GNU General Public License (GPL-2.0)
+ * <p/>
+ * ****************************************************************************
+ * <p/>
+ * Created by jeffreyawest
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jeffreyawest.weblogic.monitor"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.jeffreyawest.weblogic.monitor.WebLogicMonitor"
+        android:allowBackup="true"
+        android:icon="@drawable/oracle_o"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.EndpointEntryActivity"
+            android:label="@string/title_endpoint_entry" >
+        </activity>
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.display.DisplayServerActivity"
+            android:label="@string/title_activity_monitor_server" >
+        </activity>
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.display.DisplayClusterActivity"
+            android:label="@string/title_activity_monitor_cluster" >
+        </activity>
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.display.DisplayApplicationActivity"
+            android:label="@string/title_activity_monitor_application" >
+        </activity>
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.display.DisplayDatasourceActivity"
+            android:label="@string/title_activity_monitor_datasource" >
+        </activity>
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.list.ListDomainEntitiesActivity"
+            android:label="@string/title_activity_list_entities" >
+        </activity>
+        <activity
+            android:name=".activity.list.ListServersActivity"
+            android:label="@string/title_activity_list_servers" >
+        </activity>
+        <activity
+            android:name=".activity.list.ListClustersActivity"
+            android:label="@string/title_activity_list_clusters" >
+        </activity>
+        <activity
+            android:name=".activity.list.ListDatasourcesActivity"
+            android:label="@string/title_activity_list_datasources" >
+        </activity>
+        <activity
+            android:name=".activity.list.ListApplicationsActivity"
+            android:label="@string/title_activity_list_applications" >
+        </activity>
+        <activity
+            android:name="com.jeffreyawest.weblogic.monitor.activity.list.ListEntitiesActivity"
+            android:label="@string/title_activity_list_entities" >
+        </activity>
+    </application>
+
+</manifest>
