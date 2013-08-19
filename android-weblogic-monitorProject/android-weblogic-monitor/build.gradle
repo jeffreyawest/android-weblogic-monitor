@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:13.0.+'
+    compile files('libs/achartengine-1.1.0.jar')
+
+    compile files('libs/jackson-core-2.2.2.jar')
+    compile files('libs/jackson-annotations-2.2.2.jar')
+    compile files('libs/jackson-databind-2.2.2.jar')
+}
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.1"
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 18
+    }
+}
