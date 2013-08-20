@@ -35,7 +35,7 @@
             "fragmentsReceivedCount": 3631, 
             "fragmentsSentCount": 3708, 
             "health": "HEALTH_OK",
-            "name": "ms3", 
+            "name": "ms2-1",
             "resendRequestsCount": 0, 
             "state": "RUNNING"
           }, 
@@ -45,12 +45,37 @@
             "fragmentsReceivedCount": 3631, 
             "fragmentsSentCount": 3708, 
             "health": "HEALTH_WARN",
-            "name": "ms4", 
+            "name": "ms2-2",
             "resendRequestsCount": 0, 
             "state": "ADMIN"
           }
         ]
-      }
+      },
+            {
+              "name": "Cluster-3",
+              "servers": [
+                {
+                  "clusterMaster": false,
+                  "dropOutFrequency": "Never",
+                  "fragmentsReceivedCount": 3631,
+                  "fragmentsSentCount": 3708,
+                  "health": "HEALTH_CRITICAL",
+                  "name": "ms3-1",
+                  "resendRequestsCount": 0,
+                  "state": "STANDBY"
+                },
+                {
+                  "clusterMaster": true,
+                  "dropOutFrequency": "Never",
+                  "fragmentsReceivedCount": 3631,
+                  "fragmentsSentCount": 3708,
+                  "health": "HEALTH_FAILED",
+                  "name": "ms3-2",
+                  "resendRequestsCount": 0,
+                  "state": "ADMIN"
+                }
+              ]
+            }
     ]
   }, 
   "messages": []

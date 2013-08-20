@@ -8,6 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.jeffreyawest.weblogic.entity.Application;
+import com.jeffreyawest.weblogic.entity.ApplicationTargetState;
+import com.jeffreyawest.weblogic.entity.Cluster;
+import com.jeffreyawest.weblogic.entity.ClusterServer;
+import com.jeffreyawest.weblogic.entity.enums.ApplicationState;
+import com.jeffreyawest.weblogic.entity.enums.ServerHealth;
+import com.jeffreyawest.weblogic.entity.enums.ServerState;
 import com.jeffreyawest.weblogic.monitor.R;
 
 import java.util.List;
@@ -17,13 +23,13 @@ import java.util.List;
  */
 public class ApplicationListAdapter extends ArrayAdapter<Application>
 {
+  private static final String LOG_TAG = "ApplicationListAdapter";
 
   private final Context context;
   private final List<Application> list;
 
   public ApplicationListAdapter(Context context, int resource, List<Application> list)
   {
-
     super(context, resource, list);
 
     this.context = context;
@@ -41,12 +47,41 @@ public class ApplicationListAdapter extends ArrayAdapter<Application>
 
     if (rowView != null)
     {
-      TextView textView = null;
-      textView = (TextView) rowView.findViewById(R.id.entity_name);
+
+      TextView textView = (TextView) rowView.findViewById(R.id.entity_name);
+
+      Application app = list.get(position);
 
       if (textView != null)
       {
-        textView.setText(list.get(position).getName());
+        textView.setText(app.getName());
+      }
+
+      if (app.getTargetStates() != null
+          && app.getTargetStates().size() > 0)
+      {
+
+        TextView stateText = (TextView) rowView.findViewById(R.id.state_text);
+        if (stateText != null)
+          stateText.setText(app.getState().toString());
+
+        View stateGraphic = rowView.findViewById(R.id.state_graphic);
+        if (stateGraphic != null)
+        {
+          int color = context.getResources().getColor(app.getState().getColorID());
+          stateGraphic.setBackgroundColor(color);
+        }
+
+        TextView healthText = (TextView) rowView.findViewById(R.id.health_text);
+        if (healthText != null)
+          healthText.setText(app.getHealth().toString());
+
+        View healthGraphic = rowView.findViewById(R.id.health_graphic);
+        if (healthGraphic != null)
+        {
+          int color = context.getResources().getColor(app.getHealth().getColorID());
+          healthGraphic.setBackgroundColor(color);
+        }
       }
     }
 

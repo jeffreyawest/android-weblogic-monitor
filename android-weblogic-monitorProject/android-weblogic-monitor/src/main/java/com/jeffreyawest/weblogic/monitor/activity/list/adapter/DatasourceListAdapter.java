@@ -7,7 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.jeffreyawest.weblogic.entity.Cluster;
+import com.jeffreyawest.weblogic.entity.ClusterServer;
 import com.jeffreyawest.weblogic.entity.Datasource;
+import com.jeffreyawest.weblogic.entity.DatasourceInstance;
+import com.jeffreyawest.weblogic.entity.enums.DatasourceInstanceState;
+import com.jeffreyawest.weblogic.entity.enums.ServerHealth;
+import com.jeffreyawest.weblogic.entity.enums.ServerState;
 import com.jeffreyawest.weblogic.monitor.R;
 
 import java.util.List;
@@ -48,8 +54,34 @@ public class DatasourceListAdapter extends ArrayAdapter<Datasource>
       {
         textView.setText(list.get(position).getName());
       }
-    }
 
+      Datasource ds = list.get(position);
+
+      DatasourceInstanceState maxState = DatasourceInstanceState.Running;
+
+      for (DatasourceInstance instance : ds.getInstances())
+      {
+
+        if (instance.getState() != null
+            && maxState.getIntValue() < instance.getState().getIntValue())
+        {
+
+          maxState = instance.getState();
+        }
+      }
+
+      TextView stateText = (TextView) rowView.findViewById(R.id.state_text);
+
+      if (stateText != null)
+        stateText.setText(maxState.toString());
+
+      View stateGraphic = rowView.findViewById(R.id.state_graphic);
+      if (stateGraphic != null)
+      {
+        int color = context.getResources().getColor(maxState.getColorID());
+        stateGraphic.setBackgroundColor(color);
+      }
+    }
     return rowView;
   }
 }

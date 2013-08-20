@@ -61,7 +61,6 @@ public abstract class ListEntityActivity<T extends WebLogicEntity>
 
     try
     {
-
       Intent intent = new Intent(this, Class.forName(className));
       intent.putExtra(Constants.ENTITY_NAME, tv.getText().toString());
       startActivity(intent);

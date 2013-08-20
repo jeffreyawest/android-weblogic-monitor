@@ -95,5 +95,6 @@
     <string name="cpu_usage">CPU Usage</string>
     <string name="title_server_list">Servers</string>
     <string name="title_server_detail">Server Detail</string>
+  <string name="entities">Entities</string>
 
 </resources>

@@ -9,13 +9,21 @@ import java.util.HashMap;
  */
 public enum DatasourceInstanceState
 {
-  Running,
-  Suspended,
-  Shutdown,
-  Overloaded,
-  Unknown;
+  Overloaded(40),
+  Suspended(30),
+  Shutdown(20),
+  Unknown(10),
+  Running(0);
 
   private static final HashMap<DatasourceInstanceState, Integer> STATE_COLOR_MAP;
+
+  int intValue;
+
+  DatasourceInstanceState(final int pIntValue)
+  {
+
+    intValue = pIntValue;
+  }
 
   static
   {
@@ -29,9 +37,14 @@ public enum DatasourceInstanceState
     STATE_COLOR_MAP.put(DatasourceInstanceState.Unknown, R.color.state_unknown);
   }
 
+  public int getIntValue()
+  {
+    return intValue;
+  }
+
   public int getColorID()
   {
-
     return STATE_COLOR_MAP.get(this);
   }
+
 }

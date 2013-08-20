@@ -18,7 +18,6 @@ import java.util.List;
  */
 public class ServerListAdapter extends ArrayAdapter<Server>
 {
-
   private static final String LOG_TAG = "ServerListAdapter";
   private final Context context;
   private final List<Server> list;

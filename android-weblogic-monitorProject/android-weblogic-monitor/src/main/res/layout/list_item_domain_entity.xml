@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ListItemRelativeLayout">
+
+  <TextView
+      android:id="@+id/entity_name"
+      android:text="@string/entities"
+      style="@style/ListDomainEntities_Entity"/>
+
+  <TextView
+      android:text="@string/greater_than"
+      style="@style/ListDomainEntitiesChevron"/>
+</RelativeLayout>

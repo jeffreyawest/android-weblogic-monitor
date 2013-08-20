@@ -1,5 +1,6 @@
 package com.jeffreyawest.weblogic.monitor.activity.list;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,90 +9,63 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jeffreyawest.weblogic.monitor.Constants;
 import com.jeffreyawest.weblogic.monitor.R;
+import com.jeffreyawest.weblogic.monitor.activity.list.adapter.ServerListAdapter;
 
 public class ListDomainEntitiesActivity
-    extends Activity
-    implements View.OnTouchListener, View.OnClickListener
+    extends ListActivity
 {
 
   private static final String LOG_TAG = "ListDomainEntitiesActivity";
 
+  private static final String[] listValues = {
+      "Servers",
+      "Clusters",
+      "Datasources",
+      "Applications"};
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
-
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_list_domain_entities);
 
-    TextView tView;
-    tView = (TextView) findViewById(R.id.servers);
-    tView.setOnTouchListener(this);
+    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                                                              R.layout.list_item_domain_entity,
+                                                              R.id.entity_name,
+                                                              listValues);
 
-    tView = (TextView) findViewById(R.id.clusters);
-    tView.setOnTouchListener(this);
-
-    tView = (TextView) findViewById(R.id.datasources);
-    tView.setOnTouchListener(this);
-
-    tView = (TextView) findViewById(R.id.applications);
-    tView.setOnTouchListener(this);
+    setListAdapter(arrayAdapter);
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu)
-  {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.list_entities, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onTouch(View v, MotionEvent event)
+  public void onListItemClick(ListView l, View v, int position, long id)
   {
 
-    Log.v(LOG_TAG, "View Touched - ID=[" + v.getId()
-        + "] class=[" + v.getClass().getSimpleName()
-        + "] event: " + event.toString());
+    super.onListItemClick(l, v, position, id);
 
-    if (v instanceof TextView)
+    TextView tv = (TextView) v.findViewById(R.id.entity_name);
+    String entityType = tv.getText().toString();
+
+    Log.v(LOG_TAG, "onListItemClick: view=" + v + " label=[" + tv.getText().toString() + "]");
+
+    String className = "com.jeffreyawest.weblogic.monitor.activity.list.List" + entityType + "Activity";
+
+    try
     {
-      TextView tv = (TextView) v;
-      Log.v(LOG_TAG, "TextView Touched - Text: " + tv.getText());
-      String listType = tv.getText().toString();
 
-      try
-      {
-
-        String className = "com.jeffreyawest.weblogic.monitor.activity.list.List" + listType + "Activity";
-
-        Log.v(LOG_TAG, "Attempting to start activity [" + className + "]");
-
-        Class theClass = Class.forName(className);
-
-        Intent intent = new Intent(ListDomainEntitiesActivity.this, theClass);
-
-        intent.putExtra(Constants.ENTITY_CLASS, listType);
-
-        ListDomainEntitiesActivity.this.startActivity(intent);
-      } catch (ClassNotFoundException e)
-      {
-        Log.e(LOG_TAG, Log.getStackTraceString(e));
-        e.printStackTrace();
-      }
+      Intent intent = new Intent(this, Class.forName(className));
+      intent.putExtra(Constants.ENTITY_NAME, tv.getText().toString());
+      startActivity(intent);
+    } catch (ClassNotFoundException e)
+    {
+      e.printStackTrace();
     }
-
-    return false;
-  }
-
-  @Override
-  public void onClick(View v)
-  {
-
-    Log.v(LOG_TAG, "View Clicked: " + v.getId() + " Class: " + v.getClass().getName());
   }
 }

@@ -115,7 +115,9 @@
         android:id="@+id/btn_next"
         android:text="@string/next"
         android:onClick="clickNext"
-        style="@style/ButtonNext"/>
+        android:clickable="false"
+        style="@style/ButtonNext"
+        android:enabled="false"/>
     <Button
         android:id="@+id/btn_offline"
         android:text="@string/use_offline"

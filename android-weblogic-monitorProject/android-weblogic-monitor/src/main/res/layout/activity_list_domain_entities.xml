@@ -10,64 +10,11 @@
     android:orientation="vertical"
     tools:context=".ListDomainEntitiesActivity">
 
-  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/servers"
-        android:text="@string/servers"
-        style="@style/ListDomainEntities_Entity"/>
+  <ListView
+      android:id="@android:id/list"
+      style="@style/ListEntityListView"/>
 
-    <TextView
-        android:text="@string/greater_than"
-        style="@style/ListDomainEntitiesChevron"/>
 
-  </RelativeLayout>
-
-  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/clusters"
-        style="@style/ListDomainEntities_Entity"
-        android:text="@string/clusters"/>
-
-    <TextView
-        android:text="@string/greater_than"
-        style="@style/ListDomainEntitiesChevron"/>
-
-  </RelativeLayout>
-
-  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/datasources"
-        style="@style/ListDomainEntities_Entity"
-        android:text="@string/datasources"/>
-
-    <TextView
-        android:text="@string/greater_than"
-        style="@style/ListDomainEntitiesChevron"/>
-
-  </RelativeLayout>
-
-  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/applications"
-        style="@style/ListDomainEntities_Entity"
-        android:text="@string/applications"/>
-
-    <TextView
-        android:text="@string/greater_than"
-        style="@style/ListDomainEntitiesChevron"/>
-
-  </RelativeLayout>
 
 </LinearLayout>
