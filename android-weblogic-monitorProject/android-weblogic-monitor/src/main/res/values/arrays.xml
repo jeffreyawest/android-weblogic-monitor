@@ -20,4 +20,5 @@
 <resources>
   <string-array name="pref_sync_frequency_titles">pref_sync_frequency_titles</string-array>
   <string-array name="pref_sync_frequency_values">pref_sync_frequency_values</string-array>
+  <integer-array name="chart_margins">10,10,10,10</integer-array>
 </resources>

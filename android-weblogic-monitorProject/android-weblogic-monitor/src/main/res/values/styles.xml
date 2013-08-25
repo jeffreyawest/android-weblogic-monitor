@@ -46,7 +46,6 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:divider">@color/LightGrey</item>
-    <item name="android:showDividers"></item>
 
     <item name="android:dividerHeight">2dp</item>
   </style>
@@ -170,6 +169,25 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="GraphFragment_Header">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:paddingBottom">5dp</item>
+  </style>
+
+  <style name="GraphFragment_Graphic">
+    <item name="android:layout_height">150dp</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_weight">1</item>
+  </style>
+
+  <style name="GraphFragment_Legend">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_weight">1</item>
   </style>
 
   <style name="EntityGraph">

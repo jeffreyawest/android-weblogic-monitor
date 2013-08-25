@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.jeffreyawest.weblogic.entity.Server;
@@ -40,7 +42,7 @@ import java.text.DecimalFormat;
  * <p/>
  * Created by jeffreyawest on 8/10/13.
  */
-public class ServerHeapPieChart extends Fragment
+public class HeapPieChart
 {
 
   private String ARG_STATE = "arg-state";
@@ -51,7 +53,7 @@ public class ServerHeapPieChart extends Fragment
 
   Parcelable state;
 
-  public ServerHeapPieChart()
+  public HeapPieChart()
   {
 
     super();
@@ -60,16 +62,6 @@ public class ServerHeapPieChart extends Fragment
 
     mRenderer = new DefaultRenderer();
     mSeries = new CategorySeries("");
-  }
-
-  @Override
-  public void onCreate(Bundle savedInstanceState)
-  {
-
-    super.onCreate(savedInstanceState);
-
-    Bundle args = getArguments();
-    state = args.getParcelable(ARG_STATE);
   }
 
   public void update(Activity activity, Server pServer)
@@ -82,7 +74,9 @@ public class ServerHeapPieChart extends Fragment
     double percentHeapCurrentFree = pServer.getPercentHeapCurrentFree();
 
     TextView heapHeader = (TextView) activity.findViewById(R.id.heap_chart_header);
-    heapHeader.setText(activity.getString(R.string.jvm_heap) + "- " + percentFormat.format(percentHeapCurrentUsed) + "% " + activity.getString(R.string.used));
+
+    if (heapHeader != null)
+      heapHeader.setText(activity.getString(R.string.jvm_heap) + "- " + percentFormat.format(percentHeapCurrentUsed) + "% " + activity.getString(R.string.used));
 
     this.update(percentHeapUnallocated, percentHeapCurrentFree, percentHeapCurrentUsed);
   }
@@ -103,23 +97,31 @@ public class ServerHeapPieChart extends Fragment
         r.getColor(R.color.heap_alloc_unused),
         r.getColor(R.color.heap_alloc_used)};
 
-    mRenderer.setApplyBackgroundColor(true);
+    updateLegend(activity, NAME_LIST, COLORS);
+
+    mRenderer.setApplyBackgroundColor(false);
+    mRenderer.setExternalZoomEnabled(false);
+    mRenderer.setZoomEnabled(false);
+    mRenderer.setInScroll(false);
+    mRenderer.setFitLegend(true);
+    mRenderer.setShowLabels(false);
+    mRenderer.setShowLegend(false);
+    mRenderer.setZoomButtonsVisible(false);
+    mRenderer.setClickEnabled(false);
+    mRenderer.setScale(Charting.PIE_CHART_SCALE);
+
+    mRenderer.setMargins(activity.getResources().getIntArray(R.array.chart_margins));
+
     mRenderer.setBackgroundColor(activity.getResources().getColor(R.color.LightGrey));
     mRenderer.setChartTitle(activity.getString(R.string.jvm_heap));
     mRenderer.setChartTitleTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_title_size));
 
     mRenderer.setLabelsColor(Color.BLACK);
-    mRenderer.setShowLabels(false);
     mRenderer.setLabelsTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_label_size));
 
-    mRenderer.setMargins(new int[]{10, 10, 15, 10});
-    mRenderer.setZoomButtonsVisible(false);
-
-    mRenderer.setFitLegend(true);
 //    mRenderer.setLegendHeight(70);
     mRenderer.setLegendHeight((int) WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_height));
     mRenderer.setLegendTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_text_size));
-    mRenderer.setShowLegend(true);
 
     mRenderer.setStartAngle(90);
 
@@ -133,12 +135,49 @@ public class ServerHeapPieChart extends Fragment
 
     GraphicalView mChartView = ChartFactory.getPieChartView(activity, mSeries, mRenderer);
 
-    LinearLayout layout = (LinearLayout) activity.findViewById(R.id.heap_chart);
-    layout.addView(mChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+    LinearLayout layout = (LinearLayout) activity.findViewById(R.id.heap_chart_graphic);
+    if (layout != null)
+      layout.addView(mChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 
-    mRenderer.setClickEnabled(false);
+
     mRenderer.setSelectableBuffer(10);
 
     mChartView.repaint();
+  }
+
+
+  private void updateLegend(final Activity pActivity, final String[] pNAME_list, final int[] pCOLORS)
+  {
+    TableLayout tl = (TableLayout) pActivity.findViewById(R.id.heap_chart_legend);
+
+    if(tl != null)
+    {
+      tl.removeAllViews();
+      for(int x=0; x<pNAME_list.length; x++)
+      {
+        tl.addView(getRow(pActivity, pCOLORS[x], pNAME_list[x]));
+      }
+    }
+  }
+
+
+  public TableRow getRow(final Activity pActivity, int pColor, String pValue)
+  {
+
+    TableRow row = new TableRow(pActivity);
+
+    TextView colorView = new TextView(pActivity);
+    colorView.setBackgroundColor(pColor);
+    colorView.setTextSize(15);
+    colorView.setText(" ");
+    colorView.setWidth(15);
+    row.addView(colorView);
+
+    TextView text = new TextView(pActivity);
+    text.setText(pValue);
+    text.setTextSize(15);
+    row.addView(text);
+
+    return row;
   }
 }

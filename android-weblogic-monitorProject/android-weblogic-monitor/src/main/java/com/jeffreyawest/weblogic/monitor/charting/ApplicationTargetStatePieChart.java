@@ -100,8 +100,8 @@ public class ApplicationTargetStatePieChart
     Integer[] COLORS = colorList.toArray(new Integer[valueList.size()]);
     String[] NAME_LIST = nameList.toArray(new String[valueList.size()]);
 
-    mRenderer.setApplyBackgroundColor(false);
-//    mRenderer.setBackgroundColor(Color.argb(100, 50, 50, 50));
+    mRenderer.setApplyBackgroundColor(true);
+    mRenderer.setBackgroundColor(activity.getResources().getColor(R.color.chart_background));
     mRenderer.setChartTitle(WebLogicMonitor.getInstance().getString(R.string.application_target_state));
     mRenderer.setChartTitleTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_title_size));
 

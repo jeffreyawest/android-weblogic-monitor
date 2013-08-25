@@ -38,7 +38,7 @@
   <style name="ListEntityHeader">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">30sp</item>
+    <item name="android:textSize">35sp</item>
     <item name="android:text">Header</item>
   </style>
 
@@ -46,6 +46,7 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:divider">@color/LightGrey</item>
+
     <item name="android:dividerHeight">2dp</item>
   </style>
 
@@ -54,13 +55,13 @@
   <style name="ListItemRelativeLayout">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:padding">2dp</item>
+    <item name="android:padding">5dp</item>
   </style>
 
   <style name="ListItemEntityName">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:paddingLeft">2dp</item>
+    <item name="android:paddingLeft">5dp</item>
     <item name="android:paddingBottom">5dp</item>
     <item name="android:textSize">25sp</item>
   </style>
@@ -78,7 +79,7 @@
   <style name="ListItemEntityDetails">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">15sp</item>
+    <item name="android:textSize">20sp</item>
     <item name="android:padding">5dp</item>
   </style>
 
@@ -93,7 +94,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_alignParentRight">true</item>
     <item name="android:layout_centerVertical">true</item>
-    <item name="android:textSize">60sp</item>
+    <item name="android:textSize">25sp</item>
     <item name="android:text">@string/greater_than</item>
   </style>
 
@@ -102,8 +103,8 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_alignParentLeft">true</item>
     <item name="android:layout_centerVertical">true</item>
-    <item name="android:padding">5dp</item>
-    <item name="android:textSize">40sp</item>
+    <item name="android:padding">10dp</item>
+    <item name="android:textSize">50sp</item>
   </style>
 
   <style name="ListDomainEntitiesChevron">
@@ -142,25 +143,18 @@
   <style name="EndpointEntryPrompt">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">20sp</item>
+    <item name="android:textSize">25sp</item>
     <item name="android:paddingBottom">20dp</item>
   </style>
 
-  <style name="ButtonFullWidth">
-    <item name="android:textSize">25sp</item>
+  <style name="ButtonNext" parent="ButtonFullWidth">
     <item name="android:layout_height">50dp</item>
     <item name="android:layout_width">fill_parent</item>
   </style>
 
-  <style name="ButtonNext" parent="ButtonFullWidth">
-  </style>
-
-  <style name="ButtonGetStarted" parent="ButtonFullWidth">
-  </style>
-
   <style name="DisplayEntityHeader">
     <item name="android:layout_width">fill_parent</item>
-    <item name="android:textSize">20sp</item>
+    <item name="android:textSize">25sp</item>
     <item name="android:paddingBottom">10dp</item>
     <item name="android:layout_height">wrap_content</item>
   </style>
@@ -168,13 +162,32 @@
   <style name="OriginalJSON">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">10sp</item>
+    <item name="android:textSize">15sp</item>
   </style>
 
   <style name="OriginalJSONLabel">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">15sp</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="GraphFragment_Header">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:paddingBottom">5dp</item>
+  </style>
+
+  <style name="GraphFragment_Graphic">
+    <item name="android:layout_height">150dp</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_weight">1</item>
+  </style>
+
+  <style name="GraphFragment_Legend">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_weight">1</item>
   </style>
 
   <style name="EntityGraph">
@@ -185,14 +198,31 @@
   <style name="EntityGraphHeader">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">15sp</item>
+    <item name="android:textSize">20sp</item>
   </style>
 
   <style name="EntityInformationHeader">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">15sp</item>
+    <item name="android:textSize">20sp</item>
   </style>
 
+  <style name="ButtonFullWidth">
+    <item name="android:layout_height">60dp</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_centerVertical">true</item>
+  </style>
+
+  <style name="ButtonGetStarted" parent="ButtonFullWidth">
+    <item name="android:padding">10dp</item>
+  </style>
+
+  <style name="WelcomeMessage">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:padding">10dp</item>
+  </style>
 
 </resources>

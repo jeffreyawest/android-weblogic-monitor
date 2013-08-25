@@ -19,8 +19,8 @@ package com.jeffreyawest.weblogic.monitor.activity.display;
  * Created by jeffreyawest
  */
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -28,21 +28,23 @@ import android.widget.TextView;
 import com.jeffreyawest.weblogic.entity.Server;
 import com.jeffreyawest.weblogic.monitor.Constants;
 import com.jeffreyawest.weblogic.monitor.R;
-import com.jeffreyawest.weblogic.monitor.charting.JVMCPUPieChart;
-import com.jeffreyawest.weblogic.monitor.charting.ServerHeapPieChart;
+import com.jeffreyawest.weblogic.monitor.charting.CPUPieChart;
+import com.jeffreyawest.weblogic.monitor.charting.HeapPieChart;
+import com.jeffreyawest.weblogic.monitor.charting.fragment.CPUChartFragment;
+import com.jeffreyawest.weblogic.monitor.charting.fragment.HeapChartFragment;
 
 public class DisplayServerActivity extends DisplayEntityActivity<Server>
 {
 
-  private ServerHeapPieChart serverHeapPieChart;
-  private JVMCPUPieChart jvmCPUPieChart;
+  private HeapPieChart mHeapPieChart;
+  private CPUPieChart mJvmCPUPieChart;
 
   public DisplayServerActivity()
   {
 
     super(Server.class);
-    serverHeapPieChart = new ServerHeapPieChart();
-    jvmCPUPieChart = new JVMCPUPieChart();
+    mHeapPieChart = new HeapPieChart();
+    mJvmCPUPieChart = new CPUPieChart();
   }
 
   @Override
@@ -72,11 +74,13 @@ public class DisplayServerActivity extends DisplayEntityActivity<Server>
     sb.append(server.getName());
     sb.append(" (").append(server.getState()).append(")");
 
+    setTitle(sb.toString());
+
     TextView serverHeader = (TextView) this.findViewById(R.id.monitor_header);
     serverHeader.setText(sb.toString());
 
-    serverHeapPieChart.update(this, server);
-    jvmCPUPieChart.update(this, server);
+    mHeapPieChart.update(this, server);
+    mJvmCPUPieChart.update(this, server);
 
     String clusterName = server.getClusterName();
 
@@ -125,5 +129,14 @@ public class DisplayServerActivity extends DisplayEntityActivity<Server>
     summaryTable.addView(getRow("Heap Current:", String.valueOf(heapCurrentMB) + " MB"));
     summaryTable.addView(getRow("Heap Current Used:", String.valueOf(heapCurrentUsedMB) + " MB"));
     summaryTable.addView(getRow("Heap Current Free:", String.valueOf(heapCurrentFreeMB) + " MB"));
+
+    serverHeader.setText(sb.toString());
+    FragmentManager fm = getSupportFragmentManager();
+
+    CPUChartFragment cpuChart = (CPUChartFragment) fm.findFragmentById(R.id.cpu_chart_fragment);
+    cpuChart.updateDisplay(server);
+
+    HeapChartFragment heapChart = (HeapChartFragment) fm.findFragmentById(R.id.heap_chart_fragment);
+    heapChart.updateDisplay(server);
   }
 }

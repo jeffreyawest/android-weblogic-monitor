@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:background="@color/white"
+              android:padding="5dp"
+              android:layout_height="match_parent">
+
+  <TextView
+      android:id="@+id/heap_chart_header"
+      style="@style/GraphFragment_Header"
+      android:text="CHART HEADER!"
+      />
+
+
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:padding="5dp"
+      android:baselineAligned="false">
+
+    <LinearLayout
+        android:id="@+id/heap_chart_graphic"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        style="@style/GraphFragment_Graphic"/>
+
+    <TableLayout
+        android:id="@+id/heap_chart_legend"
+        style="@style/ListEntityListView"/>
+
+    </LinearLayout>
+
+</LinearLayout>

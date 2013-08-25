@@ -30,6 +30,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.jeffreyawest.weblogic.entity.Server;
 import com.jeffreyawest.weblogic.entity.WebLogicEntity;
 import com.jeffreyawest.weblogic.monitor.Constants;
 import com.jeffreyawest.weblogic.monitor.R;

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <color name="chart_background">#FFFFFF</color>
+
   <color name="state_unknown">#696969</color>
   <color name="state_shutdown">#000000</color>
 

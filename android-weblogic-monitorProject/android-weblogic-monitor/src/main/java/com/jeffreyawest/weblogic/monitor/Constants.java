@@ -28,4 +28,5 @@ public final class Constants
   public static final String ENTITY_NAME = "weblogic.entity.name";
   public static final String ENTITY_CLASS = "weblogic.entity.class";
   public static final int ONE_MB = 1048576;
+  public static final String SERVER = "weblogic.server";
 }

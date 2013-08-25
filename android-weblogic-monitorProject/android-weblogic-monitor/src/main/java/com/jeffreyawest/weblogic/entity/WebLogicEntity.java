@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
@@ -28,6 +29,7 @@ import java.lang.reflect.Modifier;
  * Created by jeffreyawest on 8/9/13.
  */
 public abstract class WebLogicEntity
+    implements Serializable
 {
 
   private static final String LOG_TAG = WebLogicEntity.class.getSimpleName();

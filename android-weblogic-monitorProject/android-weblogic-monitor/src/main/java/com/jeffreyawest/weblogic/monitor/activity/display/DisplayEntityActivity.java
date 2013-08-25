@@ -22,16 +22,18 @@ package com.jeffreyawest.weblogic.monitor.activity.display;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.jeffreyawest.weblogic.entity.Server;
 import com.jeffreyawest.weblogic.entity.WebLogicEntity;
 import com.jeffreyawest.weblogic.monitor.Constants;
 import com.jeffreyawest.weblogic.monitor.R;
 import com.jeffreyawest.weblogic.monitor.task.RetrieveWebLogicEntityTask;
 
-public abstract class DisplayEntityActivity<T extends WebLogicEntity> extends Activity
+public abstract class DisplayEntityActivity<T extends WebLogicEntity> extends FragmentActivity
 {
 
   private static final String LOG_TAG = "DisplayEntityActivity<T>";

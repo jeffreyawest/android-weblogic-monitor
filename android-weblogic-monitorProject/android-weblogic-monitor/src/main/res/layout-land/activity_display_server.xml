@@ -43,20 +43,30 @@
     <!--
       Heap Chart...
     -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
 
-    <fragment android:name="com.jeffreyawest.weblogic.monitor.charting.fragment.CPUChartFragment"
-              android:id="@+id/cpu_chart_fragment"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_margin="5dp"
-              tools:layout="@layout/chart_view"/>
+      <fragment
+          android:name="com.jeffreyawest.weblogic.monitor.charting.fragment.CPUChartFragment"
+          android:id="@+id/cpu_chart_fragment"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_margin="5dp"
+          tools:layout="@layout/chart_view"/>
 
-    <fragment android:name="com.jeffreyawest.weblogic.monitor.charting.fragment.HeapChartFragment"
-              android:id="@+id/heap_chart_fragment"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_margin="5dp"
-              tools:layout="@layout/chart_view"/>
+      <fragment
+          android:name="com.jeffreyawest.weblogic.monitor.charting.fragment.HeapChartFragment"
+          android:id="@+id/heap_chart_fragment"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_margin="5dp"
+          tools:layout="@layout/chart_view"/>
+    </LinearLayout>
 
     <!-- TEXT DATA -->
 
