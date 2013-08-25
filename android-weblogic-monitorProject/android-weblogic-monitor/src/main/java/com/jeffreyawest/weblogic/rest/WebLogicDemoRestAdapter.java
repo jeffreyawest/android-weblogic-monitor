@@ -1,6 +1,16 @@
+/*
+ *  Copyright (c) 2013 - Jeffrey A. West Designs
+ * ************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code. If you choose to use this code for any reason, including but not limited to its use as an example you do so at your own risk and without the support of Oracle.
+ * This code is provided under the following licenses:
+ *  - GNU General Public License (GPL-2.0)
+ * **************************************************************************
+ */
+
 package com.jeffreyawest.weblogic.rest;
 
-import android.os.Environment;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,12 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

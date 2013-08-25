@@ -1,3 +1,14 @@
+/*
+ *  Copyright (c) 2013 - Jeffrey A. West Designs
+ * ************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code. If you choose to use this code for any reason, including but not limited to its use as an example you do so at your own risk and without the support of Oracle.
+ * This code is provided under the following licenses:
+ *  - GNU General Public License (GPL-2.0)
+ * **************************************************************************
+ */
+
 package com.jeffreyawest.weblogic.rest;
 
 import android.util.Log;
@@ -5,7 +16,7 @@ import android.util.Log;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jeffreyawest.http.HTTPAdapter;
 import com.jeffreyawest.http.HTTPAdapterImpl;
-import com.jeffreyawest.weblogic.entity.*;
+import com.jeffreyawest.weblogic.entity.WebLogicEntity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,21 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * **************************************************************************
- * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
- * A. West assume any responsibility or liability for the consequences of using
- * this code.
- * <p/>
- * If you choose to use this code for any reason, including but not limited
- * to its use as an example you do so at your own risk and without the support
- * of Oracle.
- * <p/>
- * This code is provided under the following licenses:
- * <p/>
- * GNU General Public License (GPL-2.0)
- * <p/>
- * ****************************************************************************
- * <p/>
  * Created by jeffreyawest on 8/9/13.
  */
 public class WebLogicHTTPRestAdapter extends WebLogicRestAdapter

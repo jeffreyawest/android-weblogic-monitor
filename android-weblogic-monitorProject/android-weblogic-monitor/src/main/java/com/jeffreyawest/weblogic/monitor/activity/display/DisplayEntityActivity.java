@@ -1,25 +1,20 @@
+/*
+ *  Copyright (c) 2013 - Jeffrey A. West Designs
+ * ************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code. If you choose to use this code for any reason, including but not limited to its use as an example you do so at your own risk and without the support of Oracle.
+ * This code is provided under the following licenses:
+ *  - GNU General Public License (GPL-2.0)
+ * **************************************************************************
+ */
+
 package com.jeffreyawest.weblogic.monitor.activity.display;
 
 /*
- * **************************************************************************
- * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
- * A. West assume any responsibility or liability for the consequences of using
- * this code.
- * <p/>
- * If you choose to use this code for any reason, including but not limited
- * to its use as an example you do so at your own risk and without the support
- * of Oracle.
- * <p/>
- * This code is provided under the following licenses:
- * <p/>
- * GNU General Public License (GPL-2.0)
- * <p/>
- * ****************************************************************************
- * <p/>
  * Created by jeffreyawest
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -27,7 +22,6 @@ import android.util.Log;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.jeffreyawest.weblogic.entity.Server;
 import com.jeffreyawest.weblogic.entity.WebLogicEntity;
 import com.jeffreyawest.weblogic.monitor.Constants;
 import com.jeffreyawest.weblogic.monitor.R;

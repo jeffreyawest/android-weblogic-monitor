@@ -1,3 +1,14 @@
+/*
+ *  Copyright (c) 2013 - Jeffrey A. West Designs
+ * ************************************************************************
+ * This code is provided for example purposes only.  Neither Oracle nor Jeffrey
+ * A. West assume any responsibility or liability for the consequences of using
+ * this code. If you choose to use this code for any reason, including but not limited to its use as an example you do so at your own risk and without the support of Oracle.
+ * This code is provided under the following licenses:
+ *  - GNU General Public License (GPL-2.0)
+ * **************************************************************************
+ */
+
 package com.jeffreyawest.weblogic.monitor.activity.list.adapter;
 
 import android.content.Context;
@@ -8,12 +19,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.jeffreyawest.weblogic.entity.Application;
-import com.jeffreyawest.weblogic.entity.ApplicationTargetState;
-import com.jeffreyawest.weblogic.entity.Cluster;
-import com.jeffreyawest.weblogic.entity.ClusterServer;
-import com.jeffreyawest.weblogic.entity.enums.ApplicationState;
-import com.jeffreyawest.weblogic.entity.enums.ServerHealth;
-import com.jeffreyawest.weblogic.entity.enums.ServerState;
 import com.jeffreyawest.weblogic.monitor.R;
 
 import java.util.List;
