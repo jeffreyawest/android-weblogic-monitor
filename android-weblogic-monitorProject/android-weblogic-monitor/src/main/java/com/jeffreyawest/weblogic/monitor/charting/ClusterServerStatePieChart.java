@@ -17,22 +17,21 @@
 
 package com.jeffreyawest.weblogic.monitor.charting;
 
-import android.app.Activity;
-import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.jeffreyawest.weblogic.entity.Cluster;
 import com.jeffreyawest.weblogic.entity.ClusterServer;
 import com.jeffreyawest.weblogic.entity.enums.ServerState;
 import com.jeffreyawest.weblogic.monitor.R;
-import com.jeffreyawest.weblogic.monitor.WebLogicMonitor;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.model.CategorySeries;
-import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
 import java.text.DecimalFormat;
@@ -44,26 +43,27 @@ import java.util.Map;
 /**
  * Created by jeffreyawest on 8/10/13.
  */
-public class ClusterServerStatePieChart
+public class ClusterServerStatePieChart extends DefaultPieChart
 {
 
   private static final DecimalFormat percentFormat = new DecimalFormat("#");
 
-  private CategorySeries mSeries;
-  private DefaultRenderer mRenderer;
-
-  public ClusterServerStatePieChart()
+  @Override
+  public View onCreateView(LayoutInflater inflater,
+                           ViewGroup container,
+                           Bundle savedInstanceState)
   {
+    // Inflate the layout for this fragment
+    View view = inflater.inflate(R.layout.chart_view_server_state, container, false);
 
-    mRenderer = new DefaultRenderer();
-    mSeries = new CategorySeries("");
+    return view;
   }
 
-  public void update(Activity activity, Cluster pCluster)
+  public void update(Cluster pCluster)
   {
 
-    TextView healthHeader = (TextView) activity.findViewById(R.id.server_state_chart_header);
-    healthHeader.setText(activity.getString(R.string.server_state));
+    TextView healthHeader = (TextView) getActivity().findViewById(R.id.server_state_chart_header);
+    healthHeader.setText(getActivity().getString(R.string.server_state));
 
     HashMap<ServerState, Integer> countMap = new HashMap<ServerState, Integer>(7);
 
@@ -89,7 +89,7 @@ public class ClusterServerStatePieChart
 
     for (Map.Entry<ServerState, Integer> entry : countMap.entrySet())
     {
-      colorList.add(activity.getResources().getColor(entry.getKey().getColorID()));
+      colorList.add(getActivity().getResources().getColor(entry.getKey().getColorID()));
       valueList.add(entry.getValue());
       nameList.add(entry.getKey().toString());
     }
@@ -98,24 +98,9 @@ public class ClusterServerStatePieChart
     Integer[] COLORS = colorList.toArray(new Integer[valueList.size()]);
     String[] NAME_LIST = nameList.toArray(new String[valueList.size()]);
 
-    mRenderer.setApplyBackgroundColor(true);
-    mRenderer.setBackgroundColor(activity.getResources().getColor(R.color.chart_background));
-    mRenderer.setChartTitle(WebLogicMonitor.getInstance().getString(R.string.cpu_usage));
-    mRenderer.setChartTitleTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_title_size));
+    updateLegend(NAME_LIST, COLORS);
 
-    mRenderer.setLabelsColor(Color.BLACK);
-    mRenderer.setShowLabels(false);
-    mRenderer.setLabelsTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_label_size));
-
-    mRenderer.setMargins(new int[]{10, 10, 15, 10});
-    mRenderer.setZoomButtonsVisible(false);
-
-    mRenderer.setFitLegend(true);
-    mRenderer.setLegendHeight((int) WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_height));
-    mRenderer.setLegendTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_text_size));
-    mRenderer.setShowLegend(true);
-
-    mRenderer.setStartAngle(90);
+    mRenderer.setChartTitle(getActivity().getString(R.string.jvm_cpu));
 
     for (int i = 0; i < VALUES.length; i++)
     {
@@ -125,14 +110,25 @@ public class ClusterServerStatePieChart
       mRenderer.addSeriesRenderer(renderer);
     }
 
-    GraphicalView mChartView = ChartFactory.getPieChartView(activity, mSeries, mRenderer);
+    GraphicalView pieChartView = ChartFactory.getPieChartView(getActivity(), mSeries, mRenderer);
 
-    LinearLayout layout = (LinearLayout) activity.findViewById(R.id.server_state_chart);
-    layout.addView(mChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+    LinearLayout layout = (LinearLayout) getActivity().findViewById(R.id.server_state_chart_graphic);
+    layout.addView(pieChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 
-    mRenderer.setClickEnabled(false);
-    mRenderer.setSelectableBuffer(10);
+    pieChartView.repaint();
+  }
 
-    mChartView.repaint();
+  private void updateLegend(final String[] pNAME_list, final Integer[] pCOLORS)
+  {
+    TableLayout tl = (TableLayout) getActivity().findViewById(R.id.server_state_chart_legend);
+
+    if (tl != null)
+    {
+      tl.removeAllViews();
+      for (int x = 0; x < pNAME_list.length; x++)
+      {
+        tl.addView(getRow(getActivity(), pCOLORS[x], pNAME_list[x]));
+      }
+    }
   }
 }

@@ -54,22 +54,22 @@
 
       </TableRow>
 
-      <TableRow
-          style="@style/ListItemTableRow">
+      <!--      <TableRow
+                style="@style/ListItemTableRow">
 
-        <TextView
-            android:id="@+id/health_graphic"
-            style="@style/ListItemEntityGraphic"/>
+              <TextView
+                  android:id="@+id/health_graphic"
+                  style="@style/ListItemEntityGraphic"/>
 
-        <TextView
-            android:id="@+id/health_text"
-            style="@style/ListItemEntityDetails"/>
+              <TextView
+                  android:id="@+id/health_text"
+                  style="@style/ListItemEntityDetails"/>
 
-        <TextView
-            style="@style/ListItemEntityDetails"
-            android:text="@string/server_health_suffix"/>
+              <TextView
+                  style="@style/ListItemEntityDetails"
+                  android:text="@string/server_health_suffix"/>
 
-      </TableRow>
+            </TableRow>-->
 
     </TableLayout>
 

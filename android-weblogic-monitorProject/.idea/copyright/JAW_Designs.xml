@@ -1,0 +1,9 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="**************************************************************************&#10;&#10;Copyright (c) &amp;#36;today.year - Jeffrey A. West Designs&#10;&#10;This code is provided for example purposes only.  Neither Oracle nor &#10;Jeffrey A. West assume any responsibility or liability for the consequences&#10; of using this code. If you choose to use this code for any reason, &#10;including but not limited to its use as an example you do so at your own &#10;risk and without the support of Oracle.&#10;&#10;This code is provided under the following licenses:&#10; - GNU General Public License (GPL-2.0)&#10;&#10;***************************************************************************" />
+    <option name="keyword" value="Copyright" />
+    <option name="allowReplaceKeyword" value="" />
+    <option name="myName" value="JAW Designs" />
+    <option name="myLocal" value="true" />
+  </copyright>
+</component>

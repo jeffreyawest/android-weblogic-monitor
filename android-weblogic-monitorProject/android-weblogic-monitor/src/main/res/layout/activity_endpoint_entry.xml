@@ -19,114 +19,126 @@
 
  * Created by jeffreyawest
  -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="@dimen/activity_vertical_margin"
-              android:paddingBottom="@dimen/activity_vertical_margin"
-              tools:context=".EndpointEntryActivity"
-              android:orientation="vertical"
-              android:padding="20dp"
-    >
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Backdrop"
+    android:baselineAligned="false"
+    tools:context=".EndpointEntryActivity">
 
-  <TextView
-      android:text="@string/enter_wls_coords"
-      style="@style/EndpointEntryPrompt"/>
-
-  <LinearLayout
-      android:layout_width="match_parent"
+  <GridLayout
+      android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
-      android:paddingBottom="10dp">
+      style="@style/Card_Layout">
+
+    <TextView
+        android:text="@string/enter_wls_coords"
+        style="@style/EndpointEntryHeader"
+        android:layout_gravity="center"
+        android:padding="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="vertical"
+        android:padding="10dp">
 
-      <TextView
-          style="@style/EndpointEntryFieldLabel"
-          android:text="@string/enter_ip_host"/>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
 
-      <EditText
-          android:id="@+id/wls_host"
-          style="@style/EndpointEntryInputField"
-          android:text="@string/default_wls_host"
-          android:hint="@string/ip_host_hint"/>
+        <TextView
+            style="@style/EndpointEntryFieldLabel"
+            android:text="@string/enter_ip_host"/>
+
+        <EditText
+            android:id="@+id/wls_host"
+            style="@style/EndpointEntryInputField"
+            android:text="@string/default_wls_host"
+            android:hint="@string/ip_host_hint"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+        <TextView
+            style="@style/EndpointEntryFieldLabel"
+            android:text="@string/enter_port_label"/>
+
+        <EditText
+            android:id="@+id/wls_port"
+            style="@style/EndpointEntryInputField"
+            android:text="@string/default_wls_port"
+            android:hint="@string/port_hint"
+            />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+        <TextView
+            style="@style/EndpointEntryFieldLabel"
+            android:text="@string/enter_username_label"/>
+
+        <EditText
+            android:id="@+id/wls_user"
+            android:text="@string/default_wls_user"
+            android:hint="@string/username_hint"
+            style="@style/EndpointEntryInputField"/>
+
+      </LinearLayout>
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+
+        <TextView
+            android:text="@string/enter_password_label"
+            style="@style/EndpointEntryFieldLabel"/>
+
+        <EditText
+            android:id="@+id/wls_passwd"
+            android:text="@string/default_wls_password"
+            android:hint="@string/password_hint"
+            style="@style/EndpointEntryPassword"/>
+
+      </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
 
-      <TextView
-          style="@style/EndpointEntryFieldLabel"
-          android:text="@string/enter_port_label"/>
+      <Button
+          android:id="@+id/btn_next"
+          android:text="@string/next"
+          android:onClick="clickNext"
+          android:clickable="false"
+          style="@style/ButtonNext"
+          android:enabled="false"/>
 
-      <EditText
-          android:id="@+id/wls_port"
-          style="@style/EndpointEntryInputField"
-          android:text="@string/default_wls_port"
-          android:hint="@string/port_hint"
-          />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-      <TextView
-          style="@style/EndpointEntryFieldLabel"
-          android:text="@string/enter_username_label"/>
-
-      <EditText
-          android:id="@+id/wls_user"
-          android:text="@string/default_wls_user"
-          android:hint="@string/username_hint"
-          style="@style/EndpointEntryInputField"/>
-
+      <Button
+          android:id="@+id/btn_offline"
+          android:text="@string/use_offline"
+          android:onClick="clickOffline"
+          style="@style/ButtonFullWidth"/>
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+  </GridLayout>
 
-      <TextView
-          android:text="@string/enter_password_label"
-          style="@style/EndpointEntryFieldLabel"/>
-
-      <EditText
-          android:id="@+id/wls_passwd"
-          android:text="@string/default_wls_password"
-          android:hint="@string/password_hint"
-          style="@style/EndpointEntryPassword"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_next"
-        android:text="@string/next"
-        android:onClick="clickNext"
-        android:clickable="false"
-        style="@style/ButtonNext"
-        android:enabled="false"/>
-
-    <Button
-        android:id="@+id/btn_offline"
-        android:text="@string/use_offline"
-        android:onClick="clickOffline"
-        style="@style/ButtonFullWidth"/>
-  </LinearLayout>
-</LinearLayout>
-
+</RelativeLayout>

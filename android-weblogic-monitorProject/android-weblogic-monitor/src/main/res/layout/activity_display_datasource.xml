@@ -23,23 +23,11 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    tools:context=".MonitorDatasource">
+    style="@style/DisplayEntity_Backdrop"
+    tools:context=".DisplayDatasource">
 
   <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/monitor_header"
-        android:text="@string/monitor_datasource_header"
-        style="@style/DisplayEntityHeader"/>
+      style="@style/DisplayEntity_Parent">
 
     <LinearLayout
         android:id="@+id/chart_parent"
@@ -51,14 +39,14 @@
       <LinearLayout
           android:id="@+id/instance_chart_parent"
           android:layout_height="wrap_content"
-          android:layout_width="wrap_content"
+          android:layout_width="0dp"
           android:layout_weight="1"
           android:orientation="vertical">
 
         <TextView
             android:id="@+id/instance_chart_header"
             style="@style/EntityGraphHeader"
-            android:text="Instances"/>
+            android:text="@string/instances"/>
 
         <LinearLayout
             android:id="@+id/instance_chart"
@@ -69,21 +57,37 @@
 
     </LinearLayout>
 
+
+    <!-- DETAILS -->
+
     <LinearLayout
-        android:id="@+id/data_container"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:shrinkColumns="1"
-        android:orientation="vertical"/>
+        style="@style/Card_Layout">
 
-    <TextView
-        android:text="@string/original_json"
-        style="@style/OriginalJSONLabel"/>
+      <TextView
+          android:text="@string/datasource_information"
+          style="@style/Card_Header"/>
 
-    <TextView
-        android:id="@+id/original_json"
-        style="@style/OriginalJSON"
-        android:text="@string/loading"/>
+      <TableLayout
+          android:id="@+id/display_entity_detail_table"
+          style="@style/DisplayEntity_DetailTable"/>
+
+    </LinearLayout>
+
+    <!-- JSON -->
+
+    <LinearLayout
+        style="@style/Card_Layout">
+
+      <TextView
+          android:text="@string/original_json"
+          style="@style/Card_Header"/>
+
+      <TextView
+          android:id="@+id/original_json"
+          style="@style/OriginalJSON"
+          android:text="@string/loading"/>
+
+    </LinearLayout>
 
   </LinearLayout>
 

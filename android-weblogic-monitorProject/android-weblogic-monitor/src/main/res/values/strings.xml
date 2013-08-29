@@ -27,8 +27,11 @@
   <string name="hello_world">Hello world!</string>
   <string name="my_message">hello boo</string>
   <string name="action_search">Search</string>
-  <string name="welcome_message">The can be used to monitor WebLogic. It is neither created by nor
-    supported by Oracle. WebLogic Server is a registered copyright of Oracle Corporation.
+  <string name="welcome_message">This application can be used to monitor WebLogic using the RESTful
+    Management APIs.
+  </string>
+  <string name="copyright_disclaimer">Oracle and Oracle WebLogic Server are registered copyrights of
+    Oracle Corporation.
   </string>
   <string name="btn_get_started">Get Started</string>
   <string name="title_endpoint_entry">Endpoint Entry</string>
@@ -45,7 +48,7 @@
   <string name="monitor_server_header">Server: (loading)</string>
   <string name="jvm_heap">JVM Heap</string>
   <string name="cpu_load">CPU Load</string>
-  <string name="jvm_cpu">JVM CPU</string>
+  <string name="jvm_cpu">JVM CPU Usage</string>
   <string name="used">Used</string>
   <string name="load">Load</string>
   <string name="consumed">Consumed</string>
@@ -64,11 +67,11 @@
   <string name="monitor_datasource_header">Datasource: (loading)</string>
   <string name="title_activity_monitor_datasource">Monitor Datasource</string>
   <string name="next">Next</string>
-  <string name="wls_version">WebLogic Server Version:</string>
-  <string name="os_version">OS Version:</string>
+  <string name="wls_version">WLS Version</string>
+  <string name="os_version">OS Version</string>
   <string name="loading">(loading)</string>
-  <string name="original_json">Orignal JSON:</string>
-  <string name="server_information">Server Information:</string>
+  <string name="original_json">Orignal JSON</string>
+  <string name="server_information">Server Information</string>
   <string name="title_activity_list_entities">Domain Entities</string>
   <string name="servers">Servers</string>
   <string name="clusters">Clusters</string>
@@ -100,5 +103,29 @@
   <string name="title_server_list">Servers</string>
   <string name="title_server_detail">Server Detail</string>
   <string name="entities">Entities</string>
+  <string name="cluster_loading">Cluster: (loading)</string>
+  <string name="server_name">Server Name</string>
+  <string name="heap_current">Heap Current</string>
+  <string name="heap_free">Heap Free</string>
+  <string name="heap_max">Heap Max</string>
+  <string name="open_sockets">Open Sockets</string>
+  <string name="jvm_version">JVM Version</string>
+  <string name="operating_system">OS</string>
+  <string name="current_machine">Current Machine</string>
+  <string name="cluster_name">Cluster Name</string>
+  <string name="n_a">N/A</string>
+  <string name="server">Server</string>
+  <string name="fragments_received">Fragments Received</string>
+  <string name="fragments_sent">Fragments Sent</string>
+  <string name="dropout_frequency">Dropout Freq.</string>
+  <string name="cluster_master">Cluster Master</string>
+  <string name="enabled">Enabled</string>
+  <string name="type">Type</string>
+  <string name="name">Name</string>
+  <string name="instance">Instance</string>
+  <string name="datasource_information">Datasource Information</string>
+  <string name="instances">Instances</string>
+  <string name="cluster_details">Cluster Details</string>
+  <string name="target_states">Target States</string>
 
 </resources>

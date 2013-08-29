@@ -23,30 +23,21 @@ package com.jeffreyawest.weblogic.monitor.activity.display;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
-import android.widget.TextView;
 
 import com.jeffreyawest.weblogic.entity.Server;
 import com.jeffreyawest.weblogic.monitor.Constants;
 import com.jeffreyawest.weblogic.monitor.R;
-import com.jeffreyawest.weblogic.monitor.charting.CPUPieChart;
-import com.jeffreyawest.weblogic.monitor.charting.HeapPieChart;
-import com.jeffreyawest.weblogic.monitor.charting.fragment.CPUChartFragment;
-import com.jeffreyawest.weblogic.monitor.charting.fragment.HeapChartFragment;
+import com.jeffreyawest.weblogic.monitor.charting.JVMCPUPieChart;
+import com.jeffreyawest.weblogic.monitor.charting.JVMHeapPieChart;
 
 public class DisplayServerActivity extends DisplayEntityActivity<Server>
 {
-
-  private HeapPieChart mHeapPieChart;
-  private CPUPieChart mJvmCPUPieChart;
 
   public DisplayServerActivity()
   {
 
     super(Server.class);
-    mHeapPieChart = new HeapPieChart();
-    mJvmCPUPieChart = new CPUPieChart();
   }
 
   @Override
@@ -63,7 +54,7 @@ public class DisplayServerActivity extends DisplayEntityActivity<Server>
 
     super.updateDisplay(server);
 
-    StringBuilder sb = new StringBuilder("Server: ");
+    StringBuilder sb = new StringBuilder();
 
     if (server.getClusterName() != null
         && !server.getClusterName().isEmpty()
@@ -78,19 +69,13 @@ public class DisplayServerActivity extends DisplayEntityActivity<Server>
 
     setTitle(sb.toString());
 
-    TextView serverHeader = (TextView) this.findViewById(R.id.monitor_header);
-    serverHeader.setText(sb.toString());
-
-    mHeapPieChart.update(this, server);
-    mJvmCPUPieChart.update(this, server);
-
     String clusterName = server.getClusterName();
 
     if (clusterName == null
         || clusterName.isEmpty()
         || "null".equals(clusterName))
     {
-      clusterName = "N/A";
+      clusterName = getResources().getString(R.string.n_a);
     }
 
     String currentMachine = server.getCurrentMachine();
@@ -99,7 +84,7 @@ public class DisplayServerActivity extends DisplayEntityActivity<Server>
         || currentMachine.isEmpty()
         || "null".equals(currentMachine))
     {
-      currentMachine = "N/A";
+      currentMachine = getResources().getString(R.string.n_a);
     }
 
     int heapMaxMB = server.getHeapSizeMax() / Constants.ONE_MB;
@@ -109,36 +94,32 @@ public class DisplayServerActivity extends DisplayEntityActivity<Server>
     int heapCurrentUsedMB = (server.getHeapSizeCurrent() - server.getHeapFreeCurrent()) / Constants.ONE_MB;
     int heapCurrentFreeMB = server.getHeapFreeCurrent() / Constants.ONE_MB;
 
-    LinearLayout tableContainer = (LinearLayout) this.findViewById(R.id.data_container);
+    TableLayout summaryTable = (TableLayout) this.findViewById(R.id.display_entity_detail_table);
 
-    TableLayout summaryTable = new TableLayout(this);
-    tableContainer.addView(summaryTable);
+    summaryTable.addView(getRow(R.string.server_name, server.getName()));
+    summaryTable.addView(getRow(R.string.server_state, String.valueOf(server.getState())));
+    summaryTable.addView(getRow(R.string.server_health, String.valueOf(server.getHealth())));
+    summaryTable.addView(getRow(R.string.cluster_name, clusterName));
+    summaryTable.addView(getRow(R.string.current_machine, currentMachine));
+    summaryTable.addView(getRow(R.string.wls_version, server.getWeblogicVersion()));
+    summaryTable.addView(getRow(R.string.operating_system, server.getoSName() + " " + server.getoSVersion()));
+    summaryTable.addView(getRow(R.string.os_version, server.getoSVersion()));
+    summaryTable.addView(getRow(R.string.jvm_version, server.getJavaVersion()));
+    summaryTable.addView(getRow(R.string.open_sockets, String.valueOf(server.getOpenSocketsCurrentCount())));
 
-    summaryTable.addView(getRow("Server Name:", server.getName()));
-    summaryTable.addView(getRow("Server State:", String.valueOf(server.getState())));
-    summaryTable.addView(getRow("Server Health:", String.valueOf(server.getHealth())));
-    summaryTable.addView(getRow("Cluster Name:", clusterName));
-    summaryTable.addView(getRow("Current Machine:", currentMachine));
-    summaryTable.addView(getRow("WLS Version:", server.getWeblogicVersion()));
-    summaryTable.addView(getRow("Operating System:", server.getoSName() + " " + server.getoSVersion()));
-    summaryTable.addView(getRow("Operating System:", server.getName()));
-    summaryTable.addView(getRow("JVM Version:", server.getJavaVersion()));
-    summaryTable.addView(getRow("Open Socket Count:", String.valueOf(server.getOpenSocketsCurrentCount())));
+    summaryTable.addView(getRow(R.string.heap_max, String.valueOf(heapMaxMB) + " MB"));
+    summaryTable.addView(getRow(R.string.heap_free, String.valueOf(heapFreeMB) + " MB"));
 
-    summaryTable.addView(getRow("Heap Max:", String.valueOf(heapMaxMB) + " MB"));
-    summaryTable.addView(getRow("Heap Free:", String.valueOf(heapFreeMB) + " MB"));
+    summaryTable.addView(getRow(R.string.heap_current, String.valueOf(heapCurrentMB) + " MB"));
+    summaryTable.addView(getRow(R.string.heap_allocated_used, String.valueOf(heapCurrentUsedMB) + " MB"));
+    summaryTable.addView(getRow(R.string.heap_allocated_free, String.valueOf(heapCurrentFreeMB) + " MB"));
 
-    summaryTable.addView(getRow("Heap Current:", String.valueOf(heapCurrentMB) + " MB"));
-    summaryTable.addView(getRow("Heap Current Used:", String.valueOf(heapCurrentUsedMB) + " MB"));
-    summaryTable.addView(getRow("Heap Current Free:", String.valueOf(heapCurrentFreeMB) + " MB"));
-
-    serverHeader.setText(sb.toString());
     FragmentManager fm = getSupportFragmentManager();
 
-    CPUChartFragment cpuChart = (CPUChartFragment) fm.findFragmentById(R.id.cpu_chart_fragment);
-    cpuChart.updateDisplay(server);
+    JVMCPUPieChart cpuChart = (JVMCPUPieChart) fm.findFragmentById(R.id.cpu_chart_fragment);
+    cpuChart.update(server);
 
-    HeapChartFragment heapChart = (HeapChartFragment) fm.findFragmentById(R.id.heap_chart_fragment);
-    heapChart.updateDisplay(server);
+    JVMHeapPieChart heapChart = (JVMHeapPieChart) fm.findFragmentById(R.id.heap_chart_fragment);
+    heapChart.update(server);
   }
 }

@@ -120,7 +120,7 @@ public abstract class ListEntityActivity<T extends WebLogicEntity>
       theClass = activity.getEntityClass();
 
       progressDialog = new ProgressDialog(ListEntityActivity.this);
-      progressDialog.setCancelable(false);
+      progressDialog.setCancelable(true);
       progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
       progressDialog.setMax(100);
       progressDialog.setProgress(0);

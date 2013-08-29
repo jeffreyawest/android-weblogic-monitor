@@ -22,6 +22,7 @@ package com.jeffreyawest.weblogic.monitor.activity.display;
  */
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -36,13 +37,11 @@ public class DisplayApplicationActivity extends DisplayEntityActivity<Applicatio
 {
 
   private static final String LOG_TAG = "DisplayApplicationActivity";
-  private ApplicationTargetStatePieChart targetStatePieChart;
 
   public DisplayApplicationActivity()
   {
 
     super(Application.class);
-    targetStatePieChart = new ApplicationTargetStatePieChart();
   }
 
   @Override
@@ -59,10 +58,13 @@ public class DisplayApplicationActivity extends DisplayEntityActivity<Applicatio
 
     super.updateDisplay(app);
 
-    TextView serverHeader = (TextView) DisplayApplicationActivity.this.findViewById(R.id.monitor_header);
-    serverHeader.setText("Application: " + app.getName() + " (" + app.getType() + ")");
+    setTitle(app.getName() + " (" + app.getType() + ")");
+//app_target_state_chart_fragment
 
-    targetStatePieChart.update(DisplayApplicationActivity.this, app);
+    FragmentManager fm = getSupportFragmentManager();
+
+    ApplicationTargetStatePieChart targetStatePieChart = (ApplicationTargetStatePieChart) fm.findFragmentById(R.id.app_target_state_chart_fragment);
+    targetStatePieChart.update(app);
 
     LinearLayout tableContainer = (LinearLayout) DisplayApplicationActivity.this.findViewById(R.id.data_container);
 

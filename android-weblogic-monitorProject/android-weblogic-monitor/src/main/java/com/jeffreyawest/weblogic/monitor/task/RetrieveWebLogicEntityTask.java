@@ -46,7 +46,7 @@ public final class RetrieveWebLogicEntityTask<T extends WebLogicEntity> extends 
     String message = "Retrieving Detail for " + theClass.getSimpleName() + "...";
 
     progressDialog.setMessage(message);
-    progressDialog.setCancelable(false);
+    progressDialog.setCancelable(true);
     progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
     progressDialog.setMax(100);
     progressDialog.setProgress(0);

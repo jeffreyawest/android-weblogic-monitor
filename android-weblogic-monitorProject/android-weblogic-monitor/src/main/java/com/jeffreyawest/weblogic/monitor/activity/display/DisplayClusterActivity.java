@@ -35,9 +35,11 @@ package com.jeffreyawest.weblogic.monitor.activity.display;
 */
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.jeffreyawest.weblogic.entity.Cluster;
@@ -50,15 +52,10 @@ public class DisplayClusterActivity
     extends DisplayEntityActivity<Cluster>
 {
 
-  private ClusterServerHealthPieChart healthPieChart;
-  private ClusterServerStatePieChart statePieChart;
-
   public DisplayClusterActivity()
   {
 
     super(Cluster.class);
-    healthPieChart = new ClusterServerHealthPieChart();
-    statePieChart = new ClusterServerStatePieChart();
   }
 
   @Override
@@ -72,28 +69,44 @@ public class DisplayClusterActivity
   @Override
   public void updateDisplay(Cluster result)
   {
+    setTitle(result.getName());
 
     super.updateDisplay(result);
+    FragmentManager fm = getSupportFragmentManager();
 
-    healthPieChart.update(DisplayClusterActivity.this, result);
-    statePieChart.update(DisplayClusterActivity.this, result);
+    ClusterServerHealthPieChart healthPieChart = (ClusterServerHealthPieChart) fm.findFragmentById(R.id.server_health_chart_fragment);
+
+    if (healthPieChart != null)
+      healthPieChart.update(result);
+
+    ClusterServerStatePieChart statePieChart = (ClusterServerStatePieChart) fm.findFragmentById(R.id.server_state_chart_fragment);
+
+    if (statePieChart != null)
+      statePieChart.update(result);
 
     LinearLayout tableContainer = (LinearLayout) DisplayClusterActivity.this.findViewById(R.id.data_container);
 
     TableLayout summaryTable = new TableLayout(DisplayClusterActivity.this);
     tableContainer.addView(summaryTable);
 
-    summaryTable.addView(getRow("Cluster Name:", result.getName()));
+    summaryTable.addView(getRow(R.string.cluster_name, result.getName()));
 
     for (ClusterServer server : result.getServers())
     {
-      TextView header = new TextView(DisplayClusterActivity.this);
-      header.setTextSize(this.getResources().getDimension(R.dimen.entity_details_table_text_size));
-      header.setText(server.getName() + " (" + server.getState().toString() + ")");
-      tableContainer.addView(header);
-
+      tableContainer.addView(getSeparatorRow());
       tableContainer.addView(getServerTable(server));
     }
+  }
+
+  private View getSeparatorRow()
+  {
+    TableRow row = new TableRow(this);
+    TextView sep;
+
+    sep = new TextView(this);
+    sep.setText("---");
+    row.addView(sep);
+    return row;
   }
 
   private View getServerTable(ClusterServer server)
@@ -101,11 +114,13 @@ public class DisplayClusterActivity
 
     TableLayout instanceTable = new TableLayout(DisplayClusterActivity.this);
 
-    instanceTable.addView(getRow("Cluster Master:", server.getClusterMaster()));
-    instanceTable.addView(getRow("Health:", server.getHealth() == null ? "N/A" : server.getHealth().toString()));
-    instanceTable.addView(getRow("Dropout Freq:", server.getDropOutFrequency()));
-    instanceTable.addView(getRow("Fragments Sent:", server.getFragmentsSentCount()));
-    instanceTable.addView(getRow("Fragments Received:", server.getFragmentsReceivedCount()));
+    instanceTable.addView(getRow(R.string.server_name, server.getName()));
+    instanceTable.addView(getRow(R.string.cluster_master, server.getClusterMaster()));
+    instanceTable.addView(getRow(R.string.server_health, server.getHealth() == null ?
+        getResources().getString(R.string.fragments_received) : server.getHealth().toString()));
+    instanceTable.addView(getRow(R.string.dropout_frequency, server.getDropOutFrequency()));
+    instanceTable.addView(getRow(R.string.fragments_sent, server.getFragmentsSentCount()));
+    instanceTable.addView(getRow(R.string.fragments_received, server.getFragmentsReceivedCount()));
 
     return instanceTable;
   }

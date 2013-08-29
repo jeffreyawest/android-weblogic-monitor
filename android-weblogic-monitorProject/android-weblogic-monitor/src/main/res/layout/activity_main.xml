@@ -19,31 +19,47 @@
 
  * Created by jeffreyawest
  -->
-<LinearLayout
-    android:id="@+id/top_layout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="10dp"
+    style="@style/Backdrop"
     android:baselineAligned="false">
 
-  <ImageView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/imageView"
-      android:layout_gravity="center"
-      android:src="@drawable/o_fm_wls_blk"
-      android:contentDescription="@string/oracleFMWLogoDescription"/>
+  <GridLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:orientation="vertical"
+      android:background="@drawable/container_dropshadow"
+      android:layout_margin="10dp"
+      android:padding="10dp">
 
-  <TextView
-      android:id="@+id/welcome_message"
-      android:text="@string/welcome_message"
-      style="@style/WelcomeMessage"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="146dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="top|center_horizontal"
+        android:src="@drawable/o_fm_wls_blk"
+        android:contentDescription="@string/oracleFMWLogoDescription"
+        android:padding="5dp"/>
 
-  <Button
-      android:id="@+id/btn_next"
-      android:text="@string/btn_get_started"
-      android:onClick="clickGetStarted"
-      style="@style/ButtonGetStarted"/>
-</LinearLayout>
+    <TextView
+        android:id="@+id/welcome_message"
+        android:text="@string/welcome_message"
+        style="@style/WelcomeMessage"
+        />
+
+    <TextView
+        android:id="@+id/copyright_disclaimer"
+        android:text="@string/copyright_disclaimer"
+        style="@style/CopyrightDisclaimer"
+        />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:text="@string/btn_get_started"
+        android:onClick="clickGetStarted"
+        style="@style/ButtonGetStarted"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom"/>
+  </GridLayout>
+
+</RelativeLayout>

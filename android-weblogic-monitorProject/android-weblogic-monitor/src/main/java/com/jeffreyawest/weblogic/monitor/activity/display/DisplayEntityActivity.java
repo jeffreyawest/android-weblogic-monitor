@@ -54,16 +54,6 @@ public abstract class DisplayEntityActivity<T extends WebLogicEntity> extends Fr
     Intent intent = getIntent();
     String entityName = intent.getStringExtra(Constants.ENTITY_NAME);
 
-    TextView tView = (TextView) findViewById(R.id.monitor_header);
-    if (tView != null)
-      tView.setText(theClass.getSimpleName() + ": " + entityName);
-
-    if (tView != null)
-    {
-      tView = (TextView) findViewById(R.id.original_json);
-      tView.setText("Getting data for " + theClass.getSimpleName() + ":" + entityName);
-    }
-
     new RetrieveWebLogicEntityTask<T>(this, theClass).execute(entityName);
   }
 
@@ -88,6 +78,27 @@ public abstract class DisplayEntityActivity<T extends WebLogicEntity> extends Fr
 
     TextView textView = new TextView(this);
     textView.setText(pLabel);
+
+    float dimension = this.getResources().getDimension(R.dimen.entity_details_table_text_size);
+
+    textView.setTextSize(dimension);
+    row.addView(textView);
+
+    textView = new TextView(this);
+    textView.setText(pValue);
+    textView.setTextSize(dimension);
+    row.addView(textView);
+
+    return row;
+  }
+
+  public TableRow getRow(int pStringId, String pValue)
+  {
+
+    TableRow row = new TableRow(this);
+
+    TextView textView = new TextView(this);
+    textView.setText(getResources().getString(pStringId) + ":");
 
     float dimension = this.getResources().getDimension(R.dimen.entity_details_table_text_size);
 

@@ -17,19 +17,18 @@
   ~ ***************************************************************************
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:background="@color/white"
-              android:padding="5dp"
-              android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:background="@color/white"
+    android:padding="5dp"
+    android:layout_height="match_parent">
 
   <TextView
-      android:id="@+id/heap_chart_header"
+      android:id="@+id/server_health_chart_header"
       style="@style/GraphFragment_Header"
-      android:text="CHART HEADER!"
-      />
-
+      android:text="@string/cpu_load"/>
 
   <LinearLayout
       android:orientation="horizontal"
@@ -39,13 +38,14 @@
       android:baselineAligned="false">
 
     <LinearLayout
-        android:id="@+id/heap_chart_graphic"
+        android:id="@+id/server_health_chart_graphic"
         android:orientation="horizontal"
         android:layout_weight="1"
         style="@style/GraphFragment_Graphic"/>
 
     <TableLayout
-        android:id="@+id/heap_chart_legend"
+        android:id="@+id/server_health_chart_legend"
+        android:layout_weight="2"
         style="@style/ListEntityListView"/>
 
   </LinearLayout>

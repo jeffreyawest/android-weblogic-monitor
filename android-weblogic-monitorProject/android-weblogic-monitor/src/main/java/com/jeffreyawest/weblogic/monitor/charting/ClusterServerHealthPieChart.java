@@ -17,8 +17,9 @@
 
 package com.jeffreyawest.weblogic.monitor.charting;
 
-import android.app.Activity;
-import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,12 +28,9 @@ import com.jeffreyawest.weblogic.entity.Cluster;
 import com.jeffreyawest.weblogic.entity.ClusterServer;
 import com.jeffreyawest.weblogic.entity.enums.ServerHealth;
 import com.jeffreyawest.weblogic.monitor.R;
-import com.jeffreyawest.weblogic.monitor.WebLogicMonitor;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.model.CategorySeries;
-import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
 import java.text.DecimalFormat;
@@ -44,26 +42,26 @@ import java.util.Map;
 /**
  * Created by jeffreyawest on 8/10/13.
  */
-public class ClusterServerHealthPieChart
+public class ClusterServerHealthPieChart extends DefaultPieChart
 {
-
   private static final DecimalFormat percentFormat = new DecimalFormat("#");
 
-  private CategorySeries mSeries;
-  private DefaultRenderer mRenderer;
-
-  public ClusterServerHealthPieChart()
+  @Override
+  public View onCreateView(LayoutInflater inflater,
+                           ViewGroup container,
+                           Bundle savedInstanceState)
   {
+    // Inflate the layout for this fragment
+    View view = inflater.inflate(R.layout.chart_view_server_health, container, false);
 
-    mRenderer = new DefaultRenderer();
-    mSeries = new CategorySeries("");
+    return view;
   }
 
-  public void update(Activity activity, Cluster pCluster)
+  public void update(Cluster pCluster)
   {
 
-    TextView healthHeader = (TextView) activity.findViewById(R.id.server_state_chart_header);
-    healthHeader.setText(activity.getString(R.string.server_health));
+    TextView healthHeader = (TextView) getActivity().findViewById(R.id.server_health_chart_header);
+    healthHeader.setText(getActivity().getString(R.string.server_health));
 
     HashMap<ServerHealth, Integer> countMap = new HashMap<ServerHealth, Integer>(7);
 
@@ -92,7 +90,7 @@ public class ClusterServerHealthPieChart
 
     for (Map.Entry<ServerHealth, Integer> entry : countMap.entrySet())
     {
-      colorList.add(activity.getResources().getColor(entry.getKey().getColorID()));
+      colorList.add(getActivity().getResources().getColor(entry.getKey().getColorID()));
       valueList.add(entry.getValue());
       nameList.add(entry.getKey().toString());
     }
@@ -101,24 +99,7 @@ public class ClusterServerHealthPieChart
     Integer[] COLORS = colorList.toArray(new Integer[valueList.size()]);
     String[] NAME_LIST = nameList.toArray(new String[valueList.size()]);
 
-    mRenderer.setApplyBackgroundColor(true);
-    mRenderer.setBackgroundColor(activity.getResources().getColor(R.color.chart_background));
-    mRenderer.setChartTitle(WebLogicMonitor.getInstance().getString(R.string.server_health));
-    mRenderer.setChartTitleTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_title_size));
-
-    mRenderer.setLabelsColor(Color.BLACK);
-    mRenderer.setShowLabels(false);
-    mRenderer.setLabelsTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_label_size));
-
-    mRenderer.setMargins(new int[]{10, 10, 15, 10});
-    mRenderer.setZoomButtonsVisible(false);
-
-    mRenderer.setFitLegend(true);
-    mRenderer.setLegendHeight((int) WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_height));
-    mRenderer.setLegendTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_text_size));
-    mRenderer.setShowLegend(true);
-
-    mRenderer.setStartAngle(90);
+    updateLegend(NAME_LIST, COLORS, R.id.server_health_chart_legend);
 
     for (int i = 0; i < VALUES.length; i++)
     {
@@ -128,14 +109,11 @@ public class ClusterServerHealthPieChart
       mRenderer.addSeriesRenderer(renderer);
     }
 
-    GraphicalView mChartView = ChartFactory.getPieChartView(activity, mSeries, mRenderer);
+    GraphicalView pieChartView = ChartFactory.getPieChartView(getActivity(), mSeries, mRenderer);
 
-    LinearLayout layout = (LinearLayout) activity.findViewById(R.id.server_health_chart);
-    layout.addView(mChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+    LinearLayout layout = (LinearLayout) getActivity().findViewById(R.id.server_health_chart_graphic);
+    layout.addView(pieChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 
-    mRenderer.setClickEnabled(false);
-    mRenderer.setSelectableBuffer(10);
-
-    mChartView.repaint();
+    pieChartView.repaint();
   }
 }

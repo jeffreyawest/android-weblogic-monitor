@@ -34,12 +34,10 @@ import com.jeffreyawest.weblogic.monitor.charting.DatasourceInstancePieChart;
 
 public class DisplayDatasourceActivity extends DisplayEntityActivity<Datasource>
 {
-
   private DatasourceInstancePieChart datasourceInstancePieChart;
 
   public DisplayDatasourceActivity()
   {
-
     super(Datasource.class);
     datasourceInstancePieChart = new DatasourceInstancePieChart();
   }
@@ -47,7 +45,6 @@ public class DisplayDatasourceActivity extends DisplayEntityActivity<Datasource>
   @Override
   public void onCreate(Bundle savedInstanceState)
   {
-
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_display_datasource);
   }
@@ -55,11 +52,9 @@ public class DisplayDatasourceActivity extends DisplayEntityActivity<Datasource>
   @Override
   public void updateDisplay(Datasource ds)
   {
-
     super.updateDisplay(ds);
 
-    TextView serverHeader = (TextView) DisplayDatasourceActivity.this.findViewById(R.id.monitor_header);
-    serverHeader.setText("Datasource: " + ds.getName() + " (" + ds.getType() + ")");
+    setTitle(ds.getName() + " (" + ds.getType() + ")");
 
     datasourceInstancePieChart.update(DisplayDatasourceActivity.this, ds);
 
@@ -68,14 +63,14 @@ public class DisplayDatasourceActivity extends DisplayEntityActivity<Datasource>
     TableLayout summaryTable = new TableLayout(DisplayDatasourceActivity.this);
     tableContainer.addView(summaryTable);
 
-    summaryTable.addView(getRow("Name:", ds.getName()));
-    summaryTable.addView(getRow("Type:", ds.getType().toString()));
+    summaryTable.addView(getRow(R.string.name, ds.getName()));
+    summaryTable.addView(getRow(R.string.type, ds.getType().toString()));
 
     for (DatasourceInstance instance : ds.getInstances())
     {
       TextView header = new TextView(DisplayDatasourceActivity.this);
       header.setTextSize(this.getResources().getDimension(R.dimen.entity_details_table_text_size));
-      header.setText("Instance: " + instance.getName() + " (" + instance.getState().toString() + ")");
+      header.setText(getResources().getString(R.string.instance) + ": " + instance.getName() + " (" + instance.getState().toString() + ")");
       tableContainer.addView(header);
 
       tableContainer.addView(getInstanceTable(instance));
@@ -84,11 +79,10 @@ public class DisplayDatasourceActivity extends DisplayEntityActivity<Datasource>
 
   private View getInstanceTable(DatasourceInstance instance)
   {
-
     TableLayout instanceTable = new TableLayout(DisplayDatasourceActivity.this);
 
-    instanceTable.addView(getRow("Server:", instance.getServer()));
-    instanceTable.addView(getRow("Enabled:", instance.getEnabled()));
+    instanceTable.addView(getRow(R.string.server, instance.getServer()));
+    instanceTable.addView(getRow(R.string.enabled, instance.getEnabled()));
 
     return instanceTable;
   }

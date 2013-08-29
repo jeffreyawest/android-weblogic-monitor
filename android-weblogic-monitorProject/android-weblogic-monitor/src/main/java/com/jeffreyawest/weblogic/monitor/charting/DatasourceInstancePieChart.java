@@ -18,7 +18,9 @@
 package com.jeffreyawest.weblogic.monitor.charting;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,12 +29,9 @@ import com.jeffreyawest.weblogic.entity.Datasource;
 import com.jeffreyawest.weblogic.entity.DatasourceInstance;
 import com.jeffreyawest.weblogic.entity.enums.DatasourceInstanceState;
 import com.jeffreyawest.weblogic.monitor.R;
-import com.jeffreyawest.weblogic.monitor.WebLogicMonitor;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.model.CategorySeries;
-import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
 import java.text.DecimalFormat;
@@ -44,26 +43,28 @@ import java.util.Map;
 /**
  * Created by jeffreyawest on 8/10/13.
  */
-public class DatasourceInstancePieChart
+public class DatasourceInstancePieChart extends DefaultPieChart
 {
 
   private static final DecimalFormat percentFormat = new DecimalFormat("#");
 
-  private CategorySeries mSeries;
-  private DefaultRenderer mRenderer;
-
-  public DatasourceInstancePieChart()
+  @Override
+  public View onCreateView(LayoutInflater inflater,
+                           ViewGroup container,
+                           Bundle savedInstanceState)
   {
+    // Inflate the layout for this fragment
+    View view = inflater.inflate(R.layout.chart_view_ds_instance_state, container, false);
 
-    mRenderer = new DefaultRenderer();
-    mSeries = new CategorySeries("");
+    return view;
   }
 
   public void update(Activity activity, Datasource pDatasource)
   {
 
     TextView healthHeader = (TextView) activity.findViewById(R.id.instance_chart_header);
-    healthHeader.setText(activity.getString(R.string.datasource_instance_state));
+    if (healthHeader != null)
+      healthHeader.setText(activity.getString(R.string.datasource_instance_state));
 
     HashMap<DatasourceInstanceState, Integer> countMap = new HashMap<DatasourceInstanceState, Integer>(7);
 
@@ -101,24 +102,7 @@ public class DatasourceInstancePieChart
     Integer[] COLORS = colorList.toArray(new Integer[valueList.size()]);
     String[] NAME_LIST = nameList.toArray(new String[valueList.size()]);
 
-    mRenderer.setApplyBackgroundColor(true);
-    mRenderer.setBackgroundColor(activity.getResources().getColor(R.color.chart_background));
-    mRenderer.setChartTitle(WebLogicMonitor.getInstance().getString(R.string.datasource_instance_state));
-    mRenderer.setChartTitleTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_title_size));
-
-    mRenderer.setLabelsColor(Color.BLACK);
-    mRenderer.setShowLabels(false);
-    mRenderer.setLabelsTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_label_size));
-
-    mRenderer.setMargins(new int[]{10, 10, 15, 10});
-    mRenderer.setZoomButtonsVisible(false);
-
-    mRenderer.setFitLegend(true);
-    mRenderer.setLegendHeight((int) WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_height));
-    mRenderer.setLegendTextSize(WebLogicMonitor.getInstance().getResources().getDimension(R.dimen.entity_chart_legend_text_size));
-    mRenderer.setShowLegend(true);
-
-    mRenderer.setStartAngle(90);
+    updateLegend(NAME_LIST, COLORS, R.id.ds_instance_state_chart_legend);
 
     for (int i = 0; i < VALUES.length; i++)
     {
@@ -128,14 +112,11 @@ public class DatasourceInstancePieChart
       mRenderer.addSeriesRenderer(renderer);
     }
 
-    GraphicalView mChartView = ChartFactory.getPieChartView(activity, mSeries, mRenderer);
+    GraphicalView pieChartView = ChartFactory.getPieChartView(activity, mSeries, mRenderer);
 
-    LinearLayout layout = (LinearLayout) activity.findViewById(R.id.instance_chart);
-    layout.addView(mChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+    LinearLayout layout = (LinearLayout) activity.findViewById(R.id.ds_instance_state_chart_graphic);
+    layout.addView(pieChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 
-    mRenderer.setClickEnabled(false);
-    mRenderer.setSelectableBuffer(10);
-
-    mChartView.repaint();
+    pieChartView.repaint();
   }
 }
