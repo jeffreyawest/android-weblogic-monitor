@@ -55,7 +55,7 @@
   <!-- DDDDDDDDDDDDDDDDDDDDDDDDDDDD -->
 
   <style name="ListItemRelativeLayout">
-    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:padding">@dimen/list_relative_layout_padding</item>
     <item name="android:layout_margin">20dp</item>
@@ -263,8 +263,8 @@
   </style>
 
   <style name="DisplayEntity_Parent">
-    <item name="android:layout_width">fill_parent</item>
-    <!--<item name="android:background">@color/DarkGray</item>-->
+    <item name="android:layout_width">wrap_content</item>
+    <!--<item name="android:background">@drawable/container_dropshadow</item>-->
     <item name="android:layout_height">wrap_content</item>
     <item name="android:orientation">vertical</item>
     <!--<item name="android:paddingBottom">5dp</item>-->
@@ -275,7 +275,7 @@
     <item name="android:padding">10dp</item>
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
-    <item name="android:background">@color/Gray82</item>
+    <item name="android:background">@color/Gray52</item>
   </style>
 
 </resources>

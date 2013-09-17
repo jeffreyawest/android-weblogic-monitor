@@ -88,10 +88,6 @@
         android:name=".activity.list.ListApplicationsActivity"
         android:label="@string/title_activity_list_applications">
     </activity>
-    <activity
-        android:name="com.jeffreyawest.weblogic.monitor.activity.list.ListEntitiesActivity"
-        android:label="@string/title_activity_list_entities">
-    </activity>
   </application>
 
 </manifest>

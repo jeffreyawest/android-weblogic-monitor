@@ -40,9 +40,6 @@ public class ListClustersActivity
     arrayAdapter = new ClusterListAdapter(this, R.layout.list_item_cluster, entities);
     setListAdapter(arrayAdapter);
 
-    TextView tv = (TextView) findViewById(R.id.header);
-    if (tv != null)
-      tv.setText("Clusters:");
   }
 
   @Override

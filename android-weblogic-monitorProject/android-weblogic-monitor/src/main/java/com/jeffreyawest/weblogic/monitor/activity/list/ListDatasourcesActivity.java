@@ -40,9 +40,6 @@ public class ListDatasourcesActivity
     arrayAdapter = new DatasourceListAdapter(this, R.layout.list_item_datasource, entities);
     setListAdapter(arrayAdapter);
 
-    TextView tv = (TextView) findViewById(R.id.header);
-    if (tv != null)
-      tv.setText("Datasources:");
   }
 
   @Override

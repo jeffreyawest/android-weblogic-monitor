@@ -40,9 +40,6 @@ public class ListApplicationsActivity
     arrayAdapter = new ApplicationListAdapter(this, R.layout.list_item_application, entities);
     setListAdapter(arrayAdapter);
 
-    TextView tv = (TextView) findViewById(R.id.header);
-    if (tv != null)
-      tv.setText("Applications:");
   }
 
   @Override

@@ -27,12 +27,8 @@
   <string name="hello_world">Hello world!</string>
   <string name="my_message">hello boo</string>
   <string name="action_search">Search</string>
-  <string name="welcome_message">This application can be used to monitor WebLogic using the RESTful
-    Management APIs.
-  </string>
-  <string name="copyright_disclaimer">Oracle and Oracle WebLogic Server are registered copyrights of
-    Oracle Corporation.
-  </string>
+  <string name="welcome_message">This application can be used to monitor WebLogic using the RESTful Management APIs. </string>
+  <string name="copyright_disclaimer">Oracle, Fusion Middleware and WebLogic Server are registered trademarks of Oracle Corporation.  </string>
   <string name="btn_get_started">Get Started</string>
   <string name="title_endpoint_entry">Endpoint Entry</string>
   <string name="enter_wls_coords">Enter WebLogic Coordinates Below:</string>

@@ -15,23 +15,17 @@
   ~ ***************************************************************************
   -->
 
-<ScrollView
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
     style="@style/Backdrop"
-    tools:context=".ListEntity">
+    >
 
-  <LinearLayout
-      style="@style/DisplayEntity_Parent">
+  <ListView
+      android:id="@android:id/list"
+      style="@style/ListEntityListView"
+      android:background="@drawable/container_dropshadow"/>
 
-    <TextView
-        android:id="@+id/header"
-        style="@style/ListEntityHeader"/>
-
-    <ListView
-        android:id="@android:id/list"
-        style="@style/ListEntityListView"/>
-
-  </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>

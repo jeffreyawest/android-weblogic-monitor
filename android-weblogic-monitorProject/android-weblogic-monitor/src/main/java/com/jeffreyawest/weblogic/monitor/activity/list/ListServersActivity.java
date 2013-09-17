@@ -39,11 +39,6 @@ public class ListServersActivity
     arrayAdapter = new ServerListAdapter(this, R.layout.list_item_server, entities);
     setListAdapter(arrayAdapter);
 
-    TextView tv = (TextView) this.findViewById(R.id.header);
-    if (tv != null)
-    {
-      tv.setText("Servers:");
-    }
   }
 
   @Override
