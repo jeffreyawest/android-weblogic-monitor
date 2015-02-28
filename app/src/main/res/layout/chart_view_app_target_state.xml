@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ **************************************************************************
+  ~
+  ~ Copyright (c) 2013 - Jeffrey A. West Designs
+  ~
+  ~ This code is provided for example purposes only.  Neither Oracle nor
+  ~ Jeffrey A. West assume any responsibility or liability for the consequences
+  ~  of using this code. If you choose to use this code for any reason,
+  ~ including but not limited to its use as an example you do so at your own
+  ~ risk and without the support of Oracle.
+  ~
+  ~ This code is provided under the following licenses:
+  ~  - GNU General Public License (GPL-2.0)
+  ~
+  ~ ***************************************************************************
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:background="@color/white"
+    android:padding="5dp"
+    android:layout_height="match_parent">
+
+  <TextView
+      android:id="@+id/app_target_state_chart_header"
+      style="@style/GraphFragment_Header"
+      android:text="JVM CPU"/>
+
+
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:layout_height="match_parent"
+      android:padding="5dp"
+      android:baselineAligned="false">
+
+    <LinearLayout
+        android:id="@+id/app_target_state_chart_graphic"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        style="@style/GraphFragment_Graphic"/>
+
+    <TableLayout
+        android:id="@+id/app_target_state_chart_legend"
+        android:layout_weight="2"
+        style="@style/ListEntityListView"/>
+
+  </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<!--
+  ~ **************************************************************************
+  ~
+  ~ Copyright (c) 2013 - Jeffrey A. West Designs
+  ~
+  ~ This code is provided for example purposes only.  Neither Oracle nor
+  ~ Jeffrey A. West assume any responsibility or liability for the consequences
+  ~  of using this code. If you choose to use this code for any reason,
+  ~ including but not limited to its use as an example you do so at your own
+  ~ risk and without the support of Oracle.
+  ~
+  ~ This code is provided under the following licenses:
+  ~  - GNU General Public License (GPL-2.0)
+  ~
+  ~ ***************************************************************************
+  -->
+
+<!--
+
+ * Created by jeffreyawest
+ -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Backdrop"
+    android:baselineAligned="false">
+
+  <GridLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:orientation="vertical"
+      android:background="@drawable/container_dropshadow"
+      android:layout_margin="10dp"
+      android:padding="10dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="146dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="top|center_horizontal"
+        android:src="@drawable/o_fm_wls_blk"
+        android:contentDescription="@string/oracleFMWLogoDescription"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/welcome_message"
+        android:text="@string/welcome_message"
+        style="@style/WelcomeMessage"
+        />
+
+    <TextView
+        android:id="@+id/copyright_disclaimer"
+        android:text="@string/copyright_disclaimer"
+        style="@style/CopyrightDisclaimer"
+        />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:text="@string/btn_get_started"
+        android:onClick="clickGetStarted"
+        style="@style/ButtonGetStarted"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom"/>
+  </GridLayout>
+
+</RelativeLayout>

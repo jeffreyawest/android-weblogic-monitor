@@ -1,0 +1,150 @@
+{
+  "body": {
+    "items": [
+      {
+        "instances": [
+          {
+            "activeConnectionsAverageCount": 5, 
+            "enabled": true, 
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "server": "ms1", 
+            "state": "Running"
+          }, 
+          {
+            "activeConnectionsAverageCount": 5, 
+            "enabled": true, 
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "server": "ms2", 
+            "state": "Running"
+          }
+        ], 
+        "name": "gridlinkDS", 
+        "type": "GridLink"
+      }, 
+      {
+        "instances": [
+          {
+            "activeConnectionsAverageCount": 5, 
+            "enabled": true, 
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "server": "ms1", 
+            "state": "Running"
+          }, 
+          {
+            "activeConnectionsAverageCount": 5, 
+            "enabled": true, 
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "server": "ms2", 
+            "state": "Running"
+          }
+        ], 
+        "name": "gridlinkDS", 
+        "type": "GridLink"
+      }, 
+      {
+        "instances": [
+          {
+            "VersionJDBCDriver": "foo", 
+            "activeConnectionsCurrentCount": 5,
+            "activeConnectionsHighCount": 10,
+            "connectionDelayTime": 30000,
+            "connectionsTotalCount": 100,
+            "currCapacity": 25,
+            "currCapacityHighCount": 25,
+            "enabled": True, 
+            "failedAffinityBasedBorrowCount": 0,
+            "failedRCLBBasedBorrowCount": 0,
+            "failedReserveRequestCount": 0,
+            "failuresToReconnectCount": 0,
+            "highestNumAvailable": 25,
+            "leakedConnectionCount": 1,
+            "numAvailable": 20,
+            "numUnavailable": 5,
+            "prepStmtCacheAccessCount": 100,
+            "prepStmtCacheAddCount": 100,
+            "prepStmtCacheCurrentSize": 25,
+            "prepStmtCacheDeleteCount": 100,
+            "prepStmtCacheHitCount": 90,
+            "prepStmtCacheMissCount": 10,
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "reserveRequestCount": 2000,
+            "server": "ms1", 
+            "state": "Running", 
+            "successfulAffinityBasedBorrowCount": 500,
+            "successfulRclbBasedBorrowCount": 100,
+            "waitSecondsHighCount": 5,
+            "waitingForConnectionCurrentCount": 2,
+            "waitingForConnectionFailureTotal": 5,
+            "waitingForConnectionHighCount": 10,
+            "waitingForConnectionSuccessTotal": 100,
+            "waitingForConnectionTotal": 110
+          }, 
+          {
+            "activeConnectionsAverageCount": 5, 
+            "enabled": true, 
+            "racInstances": [
+              {
+                "instanceName": "gridlinkDS-0", 
+                "state": "Running"
+              }, 
+              {
+                "instanceName": "gridlinkDS-1", 
+                "state": "Suspended"
+              }
+            ], 
+            "server": "ms2", 
+            "state": "Running"
+          }
+        ], 
+        "name": "gridlinkDS", 
+        "type": "GridLink"
+      }
+    ]
+  }, 
+  "messages": []
+}

@@ -1,0 +1,99 @@
+<!--
+  ~ **************************************************************************
+  ~
+  ~ Copyright (c) 2013 - Jeffrey A. West Designs
+  ~
+  ~ This code is provided for example purposes only.  Neither Oracle nor
+  ~ Jeffrey A. West assume any responsibility or liability for the consequences
+  ~  of using this code. If you choose to use this code for any reason,
+  ~ including but not limited to its use as an example you do so at your own
+  ~ risk and without the support of Oracle.
+  ~
+  ~ This code is provided under the following licenses:
+  ~  - GNU General Public License (GPL-2.0)
+  ~
+  ~ ***************************************************************************
+  -->
+
+<!--
+
+ * Created by jeffreyawest
+ -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DisplayEntity_Backdrop"
+    tools:context=".DisplayServer">
+
+  <LinearLayout
+      style="@style/DisplayEntity_Parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          style="@style/Card_Layout">
+
+        <fragment
+            android:name="com.jeffreyawest.weblogic.monitor.charting.JVMCPUPieChart"
+            android:id="@+id/cpu_chart_fragment"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/container_dropshadow"
+          tools:layout="@layout/chart_view_cpu"/>
+
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          style="@style/Card_Layout">
+
+        <fragment
+            android:name="com.jeffreyawest.weblogic.monitor.charting.JVMHeapPieChart"
+            android:id="@+id/heap_chart_fragment"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/container_dropshadow"
+          tools:layout="@layout/chart_view_heap"/>
+      </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- TEXT DATA -->
+
+    <LinearLayout
+        style="@style/Card_Layout">
+
+      <TextView
+          android:text="@string/server_information"
+          style="@style/Card_Header"/>
+
+      <TableLayout
+          android:id="@+id/display_entity_detail_table"
+          style="@style/DisplayEntity_DetailTable"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/Card_Layout">
+
+      <TextView
+          android:text="@string/original_json"
+          style="@style/Card_Header"/>
+
+      <TextView
+          android:id="@+id/original_json"
+          android:text="@string/loading"
+          style="@style/OriginalJSON"/>
+
+    </LinearLayout>
+  </LinearLayout>
+</ScrollView>

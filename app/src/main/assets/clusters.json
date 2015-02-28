@@ -1,0 +1,82 @@
+{
+  "body": {
+    "items": [
+      {
+        "name": "Cluster-1", 
+        "servers": [
+          {
+            "clusterMaster": true, 
+            "dropOutFrequency": "Never", 
+            "fragmentsReceivedCount": 3631, 
+            "fragmentsSentCount": 3708, 
+            "health": "HEALTH_OK",
+            "name": "ms1",
+            "resendRequestsCount": 0, 
+            "state": "RUNNING"
+          }, 
+          {
+            "clusterMaster": false, 
+            "dropOutFrequency": "Never", 
+            "fragmentsReceivedCount": 3631, 
+            "fragmentsSentCount": 3708, 
+            "health": "HEALTH_OK", 
+            "name": "ms2",
+            "resendRequestsCount": 0, 
+            "state": "RUNNING"
+          }
+        ]
+      }, 
+      {
+        "name": "Cluster-2", 
+        "servers": [
+          {
+            "clusterMaster": false, 
+            "dropOutFrequency": "Never", 
+            "fragmentsReceivedCount": 3631, 
+            "fragmentsSentCount": 3708, 
+            "health": "HEALTH_OK",
+            "name": "ms2-1",
+            "resendRequestsCount": 0, 
+            "state": "RUNNING"
+          }, 
+          {
+            "clusterMaster": true, 
+            "dropOutFrequency": "Never", 
+            "fragmentsReceivedCount": 3631, 
+            "fragmentsSentCount": 3708, 
+            "health": "HEALTH_WARN",
+            "name": "ms2-2",
+            "resendRequestsCount": 0, 
+            "state": "ADMIN"
+          }
+        ]
+      },
+            {
+              "name": "Cluster-3",
+              "servers": [
+                {
+                  "clusterMaster": false,
+                  "dropOutFrequency": "Never",
+                  "fragmentsReceivedCount": 3631,
+                  "fragmentsSentCount": 3708,
+                  "health": "HEALTH_CRITICAL",
+                  "name": "ms3-1",
+                  "resendRequestsCount": 0,
+                  "state": "STANDBY"
+                },
+                {
+                  "clusterMaster": true,
+                  "dropOutFrequency": "Never",
+                  "fragmentsReceivedCount": 3631,
+                  "fragmentsSentCount": 3708,
+                  "health": "HEALTH_FAILED",
+                  "name": "ms3-2",
+                  "resendRequestsCount": 0,
+                  "state": "ADMIN"
+                }
+              ]
+            }
+    ]
+  }, 
+  "messages": []
+}
